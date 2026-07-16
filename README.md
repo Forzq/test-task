@@ -28,8 +28,8 @@ Recommended dataset: [Bolts and Nuts by Kim on Roboflow Universe](https://univer
 
 1. Open the dataset page and select **Download Dataset**.
 2. Export the dataset in **YOLOv8** format.
-3. Extract it into `data/bolts-and-nuts/`.
-4. Confirm that the exported `data.yaml` has class order `0: nut`, `1: bolt`.
+3. Extract it directly into `data/`, preserving the `train/`, `valid/`, and `test/` folders.
+4. Use the exported `data/data.yaml`. In the downloaded version, class order is `0: bolt`, `1: nut`.
 
 Do not use the validation or test images for manually generated augmentations. The selected dataset version already includes training-only transformations; Ultralytics also performs its standard online augmentations during fine-tuning.
 
@@ -50,10 +50,10 @@ For a CUDA-enabled RTX 2060 Super, install the PyTorch build appropriate for the
 The service uses **pretrained YOLOv8n** (`yolov8n.pt`) as the baseline. It is small enough for an RTX 2060 Super while remaining a real object detector that returns boxes and confidence scores.
 
 ```bash
-python scripts/train.py --data data/bolts-and-nuts/data.yaml --epochs 80 --imgsz 640 --batch 8 --device 0
+python scripts/train.py --data data/data.yaml --epochs 80 --imgsz 640 --batch 8 --device 0
 ```
 
-Training outputs are saved under `runs/detect/nut_bolt/`. Copy the best checkpoint for the API:
+Training outputs are saved under `runs/detect/nut_bolt/`. The script prints the exact checkpoint path when it finishes. Copy the best checkpoint for the API:
 
 ```powershell
 New-Item -ItemType Directory -Force models
@@ -67,10 +67,18 @@ If CUDA runs out of memory, retry with `--batch 4`. Do not train from scratch fo
 Run evaluation only after training. It uses the `test` split declared in the dataset YAML and reports precision, recall, mAP@50, and mAP@50-95.
 
 ```bash
-python scripts/evaluate.py --data data/bolts-and-nuts/data.yaml --weights models/best.pt --imgsz 640 --device 0
+python scripts/evaluate.py --data data/data.yaml --weights models/best.pt --imgsz 640 --device 0
 ```
 
 Record the command output in the submission README after the training run. Do not copy metrics published by the dataset author: report only metrics produced by this checkpoint on the held-out test split.
+
+Current run, trained with `yolov8n.pt` for 80 epochs on the downloaded dataset:
+
+| Split | Precision | Recall | mAP@50 | mAP@50-95 |
+| --- | ---: | ---: | ---: | ---: |
+| Held-out test (82 images, 461 objects) | 0.949 | 0.948 | 0.951 | 0.701 |
+
+The dataset contains a small number of polygon labels mixed with bounding boxes. Ultralytics converts the polygons to boxes and warns about the mixed annotations during detection evaluation. This is an identified data-quality limitation of the public dataset.
 
 ## Run the API locally
 

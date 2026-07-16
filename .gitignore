@@ -13,7 +13,7 @@ htmlcov/
 # Local data, model weights, and training artefacts
 data/*
 !data/dataset.example.yaml
-models/*.pt
+*.pt
 runs/
 
 # IDE and operating system files

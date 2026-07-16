@@ -160,6 +160,7 @@ def train(config: TrainingConfig) -> Path:
     """
     from ultralytics import YOLO
 
+    output_project = config.project.resolve()
     model = YOLO(config.model)
     model.train(
         data=str(config.data),
@@ -167,13 +168,13 @@ def train(config: TrainingConfig) -> Path:
         imgsz=config.image_size,
         batch=config.batch_size,
         device=config.device,
-        project=str(config.project),
+        project=str(output_project),
         name=config.run_name,
         seed=config.seed,
         workers=config.workers,
         pretrained=True,
     )
-    best_weights = config.project / config.run_name / "weights" / "best.pt"
+    best_weights = Path(model.trainer.best)
     print(f"Best checkpoint: {best_weights}")
     return best_weights
 
