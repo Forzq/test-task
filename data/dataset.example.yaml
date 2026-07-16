@@ -1,0 +1,9 @@
+# Copy this file to data/dataset.yaml and adjust paths after downloading the dataset.
+path: data/bolts-and-nuts
+train: train/images
+val: valid/images
+test: test/images
+
+names:
+  0: nut
+  1: bolt

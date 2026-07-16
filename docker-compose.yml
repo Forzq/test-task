@@ -1,0 +1,10 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      MODEL_PATH: /app/models/best.pt
+      CONFIDENCE_THRESHOLD: "0.50"
+    volumes:
+      - ./models:/app/models:ro

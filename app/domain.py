@@ -1,0 +1,51 @@
+"""Domain entities and interfaces for object detection."""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+from typing import Protocol
+
+from PIL.Image import Image
+
+
+@dataclass(frozen=True, slots=True)
+class RawDetection:
+    """
+    A single detection produced by a model before API-specific filtering.
+
+    Parameters
+    ----------
+    label : str
+        Class label emitted by the model.
+    confidence : float
+        Model confidence score in the range from zero to one.
+    bbox : tuple[float, float, float, float]
+        Bounding box represented as x1, y1, x2, y2 pixel coordinates.
+    """
+
+    label: str
+    confidence: float
+    bbox: tuple[float, float, float, float]
+
+
+class DetectorProtocol(Protocol):
+    """Interface implemented by detection model adapters."""
+
+    def predict(
+        self, image: Image, confidence_threshold: float
+    ) -> list[RawDetection]:
+        """
+        Run object detection for a decoded RGB image.
+
+        Parameters
+        ----------
+        image : PIL.Image.Image
+            Decoded input image in RGB mode.
+        confidence_threshold : float
+            Lowest confidence score that should be retained by the model.
+
+        Returns
+        -------
+        list[RawDetection]
+            Raw detections returned by the underlying model.
+        """
