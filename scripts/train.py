@@ -34,6 +34,14 @@ class TrainingConfig:
         Random seed used to improve run reproducibility.
     workers : int
         Number of data-loader worker processes.
+    hsv_h : float
+        Maximum hue variation for online colour augmentation.
+    hsv_s : float
+        Maximum saturation variation for online colour augmentation.
+    hsv_v : float
+        Maximum brightness variation for online colour augmentation.
+    patience : int
+        Number of epochs without validation improvement before early stopping.
     """
 
     data: Path
@@ -46,6 +54,10 @@ class TrainingConfig:
     run_name: str
     seed: int
     workers: int
+    hsv_h: float
+    hsv_s: float
+    hsv_v: float
+    patience: int
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -79,6 +91,30 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--name", default="nut_bolt", help="Training run name.")
     parser.add_argument("--seed", type=int, default=42, help="Random seed.")
     parser.add_argument("--workers", type=int, default=4, help="Data-loader workers.")
+    parser.add_argument(
+        "--hsv-h",
+        type=float,
+        default=0.015,
+        help="Hue augmentation strength (default: 0.015).",
+    )
+    parser.add_argument(
+        "--hsv-s",
+        type=float,
+        default=0.5,
+        help="Saturation augmentation strength (default: 0.5).",
+    )
+    parser.add_argument(
+        "--hsv-v",
+        type=float,
+        default=0.4,
+        help="Brightness augmentation strength (default: 0.4).",
+    )
+    parser.add_argument(
+        "--patience",
+        type=int,
+        default=7,
+        help="Stop after this many epochs without validation improvement (default: 7).",
+    )
     return parser
 
 
@@ -108,6 +144,10 @@ def parse_config() -> TrainingConfig:
         run_name=arguments.name,
         seed=arguments.seed,
         workers=arguments.workers,
+        hsv_h=arguments.hsv_h,
+        hsv_s=arguments.hsv_s,
+        hsv_v=arguments.hsv_v,
+        patience=arguments.patience,
     )
     _validate_config(config)
     return config
@@ -137,6 +177,15 @@ def _validate_config(config: TrainingConfig) -> None:
         raise ValueError("batch must be positive")
     if config.workers < 0:
         raise ValueError("workers cannot be negative")
+    if config.patience < 0:
+        raise ValueError("patience cannot be negative")
+    for name, value in (
+        ("hsv_h", config.hsv_h),
+        ("hsv_s", config.hsv_s),
+        ("hsv_v", config.hsv_v),
+    ):
+        if not 0.0 <= value <= 1.0:
+            raise ValueError(f"{name} must be between 0 and 1")
 
 
 def train(config: TrainingConfig) -> Path:
@@ -172,6 +221,10 @@ def train(config: TrainingConfig) -> Path:
         name=config.run_name,
         seed=config.seed,
         workers=config.workers,
+        hsv_h=config.hsv_h,
+        hsv_s=config.hsv_s,
+        hsv_v=config.hsv_v,
+        patience=config.patience,
         pretrained=True,
     )
     best_weights = Path(model.trainer.best)

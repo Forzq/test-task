@@ -13,6 +13,7 @@ htmlcov/
 # Local data, model weights, and training artefacts
 data/*
 !data/dataset.example.yaml
+!data/combined.yaml
 # Base checkpoints are downloaded automatically by Ultralytics during training.
 # The trained models/best.pt checkpoint is intentionally tracked for submission.
 yolov8n.pt
