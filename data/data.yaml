@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 2
+names: ['bolt', 'nut']
+
+roboflow:
+  workspace: kim-sxidz
+  project: bolts-and-nuts-vhkyw
+  version: 8
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/kim-sxidz/bolts-and-nuts-vhkyw/dataset/8

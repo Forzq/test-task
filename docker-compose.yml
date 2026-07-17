@@ -1,0 +1,16 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      MODEL_PATH: /app/models/best.pt
+      CONFIDENCE_THRESHOLD: ${CONFIDENCE_THRESHOLD:-0.45}
+      ENABLE_CROP_CLASSIFIER: ${ENABLE_CROP_CLASSIFIER:-true}
+      CLASSIFIER_MODEL_PATH: /app/models/classifier_best.pt
+      CLASSIFIER_CONFIDENCE_THRESHOLD: ${CLASSIFIER_CONFIDENCE_THRESHOLD:-0.54}
+      CLASSIFIER_CROP_CONTEXT: ${CLASSIFIER_CROP_CONTEXT:-0.20}
+      CLASSIFIER_IMAGE_SIZE: ${CLASSIFIER_IMAGE_SIZE:-224}
+      MIN_BOX_AREA_RATIO: ${MIN_BOX_AREA_RATIO:-0.001}
+    volumes:
+      - ./models:/app/models:ro
