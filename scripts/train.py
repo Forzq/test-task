@@ -42,6 +42,8 @@ class TrainingConfig:
         Maximum brightness variation for online colour augmentation.
     patience : int
         Number of epochs without validation improvement before early stopping.
+    save_period : int
+        Interval in epochs for retaining periodic checkpoints.
     """
 
     data: Path
@@ -58,6 +60,7 @@ class TrainingConfig:
     hsv_s: float
     hsv_v: float
     patience: int
+    save_period: int
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -75,12 +78,12 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--data", type=Path, required=True, help="YOLO dataset YAML path.")
     parser.add_argument(
         "--model",
-        default="yolov8n.pt",
-        help="Pretrained checkpoint to fine-tune (default: yolov8n.pt).",
+        default="yolov8s.pt",
+        help="Pretrained checkpoint to fine-tune (default: yolov8s.pt).",
     )
     parser.add_argument("--epochs", type=int, default=80, help="Training epochs.")
     parser.add_argument("--imgsz", type=int, default=640, help="Input image size.")
-    parser.add_argument("--batch", type=int, default=8, help="Training batch size.")
+    parser.add_argument("--batch", type=int, default=4, help="Training batch size.")
     parser.add_argument("--device", default="0", help="Ultralytics device, for example 0 or cpu.")
     parser.add_argument(
         "--project",
@@ -90,7 +93,7 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("--name", default="nut_bolt", help="Training run name.")
     parser.add_argument("--seed", type=int, default=42, help="Random seed.")
-    parser.add_argument("--workers", type=int, default=4, help="Data-loader workers.")
+    parser.add_argument("--workers", type=int, default=2, help="Data-loader workers.")
     parser.add_argument(
         "--hsv-h",
         type=float,
@@ -114,6 +117,12 @@ def build_parser() -> argparse.ArgumentParser:
         type=int,
         default=7,
         help="Stop after this many epochs without validation improvement (default: 7).",
+    )
+    parser.add_argument(
+        "--save-period",
+        type=int,
+        default=5,
+        help="Save a checkpoint every N epochs for post-training selection (default: 5).",
     )
     return parser
 
@@ -148,6 +157,7 @@ def parse_config() -> TrainingConfig:
         hsv_s=arguments.hsv_s,
         hsv_v=arguments.hsv_v,
         patience=arguments.patience,
+        save_period=arguments.save_period,
     )
     _validate_config(config)
     return config
@@ -179,6 +189,8 @@ def _validate_config(config: TrainingConfig) -> None:
         raise ValueError("workers cannot be negative")
     if config.patience < 0:
         raise ValueError("patience cannot be negative")
+    if config.save_period <= 0:
+        raise ValueError("save-period must be positive")
     for name, value in (
         ("hsv_h", config.hsv_h),
         ("hsv_s", config.hsv_s),
@@ -225,6 +237,7 @@ def train(config: TrainingConfig) -> Path:
         hsv_s=config.hsv_s,
         hsv_v=config.hsv_v,
         patience=config.patience,
+        save_period=config.save_period,
         pretrained=True,
     )
     best_weights = Path(model.trainer.best)

@@ -78,6 +78,13 @@ def build_parser() -> argparse.ArgumentParser:
         help="Root directory of the additional YOLO dataset.",
     )
     parser.add_argument(
+        "--additional",
+        type=Path,
+        action="append",
+        default=[],
+        help="Optional extra positive dataset; repeat for multiple sources.",
+    )
+    parser.add_argument(
         "--output",
         type=Path,
         default=Path("data/combined.yaml"),
@@ -87,6 +94,13 @@ def build_parser() -> argparse.ArgumentParser:
         "--negatives",
         type=Path,
         help="Optional empty-label negative dataset prepared by prepare_negative_dataset.py.",
+    )
+    parser.add_argument(
+        "--negative-additional",
+        type=Path,
+        action="append",
+        default=[],
+        help="Optional extra empty-label dataset; repeat for multiple hard-negative sources.",
     )
     return parser
 
@@ -299,6 +313,8 @@ def write_combined_yaml(
     secondary: DatasetSummary,
     output_path: Path,
     negatives: DatasetSummary | None = None,
+    additional: list[DatasetSummary] | None = None,
+    additional_negatives: list[DatasetSummary] | None = None,
 ) -> None:
     """
     Write a YOLO YAML which references positive and optional negative images.
@@ -313,11 +329,16 @@ def write_combined_yaml(
         Location of the resulting combined YAML file.
     negatives : DatasetSummary, optional
         Verified empty-label images used to teach background rejection.
+    additional : list[DatasetSummary], optional
+        Further verified positive datasets appended before the negative source.
+    additional_negatives : list[DatasetSummary], optional
+        Further verified empty-label datasets, such as mined hard negatives.
     """
     output = output_path.resolve()
-    sources = [primary, secondary]
+    sources = [primary, secondary, *(additional or [])]
     if negatives is not None:
         sources.append(negatives)
+    sources.extend(additional_negatives or [])
     payload: dict[str, Any] = {
         "train": [_relative_image_directory(output, source.root, "train") for source in sources],
         "val": [_relative_image_directory(output, source.root, "valid") for source in sources],
@@ -365,12 +386,27 @@ def main() -> None:
     arguments = build_parser().parse_args()
     primary = inspect_dataset(arguments.primary)
     secondary = inspect_dataset(arguments.secondary)
+    additional = [inspect_dataset(path) for path in arguments.additional]
     negatives = inspect_negative_dataset(arguments.negatives) if arguments.negatives else None
-    write_combined_yaml(primary, secondary, arguments.output, negatives)
+    additional_negatives = [
+        inspect_negative_dataset(path) for path in arguments.negative_additional
+    ]
+    write_combined_yaml(
+        primary,
+        secondary,
+        arguments.output,
+        negatives,
+        additional,
+        additional_negatives,
+    )
     print(_format_summary(primary, "Primary dataset"))
     print(_format_summary(secondary, "Secondary dataset"))
+    for index, dataset in enumerate(additional, start=1):
+        print(_format_summary(dataset, f"Additional dataset {index}"))
     if negatives is not None:
         print(_format_summary(negatives, "Negative dataset"))
+    for index, dataset in enumerate(additional_negatives, start=1):
+        print(_format_summary(dataset, f"Additional negative dataset {index}"))
     print(f"Combined YAML: {arguments.output.resolve()}")
 
 

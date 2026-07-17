@@ -2,15 +2,24 @@
 train:
 - train/images
 - dataset2/train/images
+- external_positives/train/images
 - negatives/train/images
+- hard_negatives/train/images
+- manual_hard_negatives/train/images
 val:
 - valid/images
 - dataset2/valid/images
+- external_positives/valid/images
 - negatives/valid/images
+- hard_negatives/valid/images
+- manual_hard_negatives/valid/images
 test:
 - test/images
 - dataset2/test/images
+- external_positives/test/images
 - negatives/test/images
+- hard_negatives/test/images
+- manual_hard_negatives/test/images
 names:
 - bolt
 - nut

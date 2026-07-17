@@ -89,6 +89,8 @@ class UltralyticsDetector:
         results = self._model.predict(
             source=image,
             conf=confidence_threshold,
+            imgsz=640,
+            iou=0.6,
             verbose=False,
         )
         detections: list[RawDetection] = []

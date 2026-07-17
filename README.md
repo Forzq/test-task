@@ -1,22 +1,30 @@
 # Nut and Bolt Detection API
 
-Python service that detects and counts `nut` and `bolt` objects in JPG or PNG images. It provides a FastAPI endpoint, Docker packaging, a YOLOv8 fine-tuning script, and an evaluation script for the held-out test split.
+Python service that detects and counts `nut` and `bolt` objects in JPG or PNG images. It combines YOLO detection with an optional `bolt` / `nut` / `other` crop verifier so unrelated detector proposals can be rejected before they reach the API response.
 
 ## Scope and architecture
 
 ```text
-JPG/PNG upload -> POST /predict -> image validation -> YOLO inference
-    -> confidence/class filtering -> JSON objects + counts
+JPG/PNG upload -> POST /predict -> image validation -> YOLO detector
+    -> square crop with context -> bolt/nut/other classifier
+    -> reject other/ambiguous crops -> JSON objects + counts
 ```
 
-The API only exposes the two task classes: `nut` and `bolt`. Detections below the configured confidence threshold and labels outside these classes are not counted. This keeps ambiguous or unsupported model outputs out of the business result; they should be logged and analysed before adding a new class in production.
+The API only exposes the two task classes: `nut` and `bolt`. `other` is an internal verifier class and never appears in JSON. The trained verifier is enabled by default; `ENABLE_CROP_CLASSIFIER=false` provides a detector-only fallback.
+
+Before crop classification, detections smaller than `MIN_BOX_AREA_RATIO=0.001` are rejected. This prevents isolated texture details such as sugar sprinkles from being enlarged into convincing object crops. The threshold is relative to image area, so it works consistently across different upload resolutions.
 
 ## Project layout
 
 ```text
 app/                 FastAPI application and inference layers
-scripts/train.py     Fine-tunes pretrained YOLOv8n weights
+scripts/train.py     Fine-tunes pretrained YOLOv8s weights
+scripts/prepare_classifier_dataset.py  Creates balanced crops and mines hard negatives
+scripts/train_classifier.py            Fine-tunes pretrained YOLOv8n-cls weights
+scripts/calibrate_classifier_threshold.py  Calibrates second-stage acceptance
 scripts/evaluate.py  Evaluates best.pt on the held-out test split
+scripts/select_checkpoint.py  Selects weights by recall and negative-image FPR
+scripts/regression_check.py   Checks fixed false-positive/false-negative cases
 data/                Dataset configuration example; downloaded data is ignored by Git
 models/              Trained best.pt is placed here before API inference
 tests/               HTTP-level tests using a fake detector
@@ -24,19 +32,20 @@ tests/               HTTP-level tests using a fake detector
 
 ## Dataset
 
-The original [Bolts and Nuts](https://universe.roboflow.com/kim-sxidz/bolts-and-nuts-vhkyw/dataset/8) dataset is stored in `data/`; the additional [Nuts and Bolts Detector](https://universe.roboflow.com/nutsandbolts/nuts-and-bolts-detector/dataset/2) dataset is stored in `data/dataset2/`. Both use the same class order: `0: bolt`, `1: nut`. The repository's `data/combined.yaml` references both sources without copying or modifying images and labels.
+The original [Bolts and Nuts](https://universe.roboflow.com/kim-sxidz/bolts-and-nuts-vhkyw/dataset/8) dataset is stored in `data/`; the additional [Nuts and Bolts Detector](https://universe.roboflow.com/nutsandbolts/nuts-and-bolts-detector/dataset/2) dataset is stored in `data/dataset2/`. Both use the same class order: `0: bolt`, `1: nut`. The generated `data/external_positives/` source adds 1,746 annotated images converted from NPU-BOLT, MVTec Screws, and Bolts/Washers. The final `data/combined.yaml` references all positive and negative sources.
 
 1. Open the dataset page and select **Download Dataset**.
 2. Export the dataset in **YOLOv8** format.
 3. Extract it directly into `data/`, preserving the `train/`, `valid/`, and `test/` folders.
 4. Keep the first export in `data/` and extract the second export into `data/dataset2/`.
-5. Generate the combined configuration and validate both sources:
+5. Prepare the external source and generate the combined configuration:
 
 ```bash
-python scripts/combine_datasets.py
+python scripts/prepare_external_positive_dataset.py --replace
+python scripts/combine_datasets.py --additional data/external_positives --negatives data/negatives --negative-additional data/hard_negatives
 ```
 
-The combining script prints the final split sizes and stops if the two positive sources do not have exactly the expected `bolt`/`nut` class order or contain invalid label IDs. When a negative source is supplied, it also verifies one empty label file per negative image.
+The converter creates 775 target-centred NPU training crops with recalculated boxes, converts MVTec oriented boxes into enclosing axis-aligned boxes, and preserves source-level split separation. MVTec is licensed CC BY-NC-SA 4.0 and must be replaced before commercial use. The combining script rejects incompatible classes, malformed labels, and non-empty negative labels.
 
 Do not create augmented copies of validation or test images. Colour augmentation is applied online to training images only: hue, saturation, and brightness are varied in memory while each batch is loaded. This avoids data leakage and does not increase disk usage.
 
@@ -48,10 +57,33 @@ The preparation script automatically downloads two public sources: 128 generic C
 
 ```bash
 python scripts/prepare_negative_dataset.py --replace
-python scripts/combine_datasets.py --negatives data/negatives
+python scripts/mine_hard_negatives.py --weights models/best.pt --limit 200 --replace
+python scripts/combine_datasets.py --additional data/external_positives --negatives data/negatives --negative-additional data/hard_negatives
 ```
 
-The `--replace` flag is intentional: it rebuilds only the generated `data/negatives/` directory. Downloaded source files remain cached in `data/raw_negatives/`, and `data/negatives/manifest.json` records source URLs and exact split counts. Hard negatives are ordinary unrelated images on which the current model produces a false `nut` or `bolt`; these can later be added through one or more `--generic-source` directories without changing the class list.
+The `--replace` flag rebuilds only a generated output directory. Downloaded files remain cached, and each generated dataset contains a provenance manifest. The current hard-negative source contains 200 unrelated images on which the previous model produced a false `nut` or `bolt` with confidence from 0.504 to 0.908.
+
+Confirmed user-reported failures can be stored in `data/manual_hard_negatives/` with empty labels. The current source contains the donut/sprinkle regression image in the training split only. `combined.yaml` includes this source, while the same image is retained under `tests/fixtures/` for deterministic post-processing regression checks.
+
+### Crop-classifier dataset
+
+The second stage uses the Ultralytics classification directory format: `data/classifier/{train,val,test}/{bolt,nut,other}`. Positive crops come from existing YOLO annotations. The `other` class comes only from images with empty detection labels and combines full images, random regions, and low-confidence proposals produced by the current detector. The latter are hard negatives because they are precisely the unrelated regions YOLO considers bolt- or nut-like.
+
+Build it with the deployed detector checkpoint:
+
+```powershell
+.venv313\Scripts\python.exe scripts\prepare_classifier_dataset.py --data data\combined.yaml --weights models\best.pt --device 0 --batch 4 --chunk-size 16 --replace
+```
+
+The current generated dataset contains 13,410 square 224×224 crops. Classes are balanced independently within every split:
+
+| Split | bolt | nut | other | Total |
+| --- | ---: | ---: | ---: | ---: |
+| train | 3,809 | 3,809 | 3,809 | 11,427 |
+| val | 374 | 374 | 374 | 1,122 |
+| test | 287 | 287 | 287 | 861 |
+
+Of these, 567 `other` crops are current-detector false proposals, 3,119 are random negative regions, and 784 are complete negative scenes. Detector proposals are selected before generic negative crops, guaranteeing that mined hard negatives are retained during class balancing. The exact provenance and source counts are stored in `data/classifier/manifest.json`. No augmented copies are written to validation or test.
 
 ## Local installation
 
@@ -67,22 +99,51 @@ For a CUDA-enabled RTX 2060 Super, install the PyTorch build appropriate for the
 
 ## Fine-tuning
 
-The service uses **pretrained YOLOv8n** (`yolov8n.pt`) as the baseline. It is small enough for an RTX 2060 Super while remaining a real object detector that returns boxes and confidence scores.
+The service fine-tunes **pretrained YOLOv8s** (`yolov8s.pt`). Batch size 4 and two loader workers fit the RTX 2060 Super while limiting host RAM usage.
 
 ```bash
-python scripts/train.py --data data/combined.yaml --epochs 150 --patience 7 --imgsz 640 --batch 8 --device 0 --name nut_bolt_combined --hsv-h 0.015 --hsv-s 0.5 --hsv-v 0.4
+python scripts/train.py --data data/combined.yaml --model yolov8s.pt --epochs 80 --patience 7 --imgsz 640 --batch 4 --workers 2 --device 0 --name nut_bolt_yolov8s_v2 --save-period 5
 ```
 
-The training script enables moderate colour augmentation by default: `--hsv-h 0.015 --hsv-s 0.5 --hsv-v 0.4`. These transforms only affect the training split; validation and test images remain unchanged. Early stopping now uses `--patience 7`: a maximum of 150 epochs is allowed, but training stops after seven epochs without validation improvement and keeps the best validation checkpoint.
+The training script enables moderate online colour augmentation by default. Validation and test images remain unchanged. Early stopping uses `--patience 7`, and `--save-period 5` retains periodic checkpoints for task-specific selection.
 
-Training outputs are saved under `runs/detect/nut_bolt_combined/`. The script prints the exact checkpoint path when it finishes. Copy the best checkpoint for the API:
+Training outputs are saved under `runs/detect/nut_bolt_yolov8s_v2/`. Select the deployable checkpoint using positive recall and negative-image false-positive rate; the selector copies the winner to `models/best.pt`:
 
 ```powershell
-New-Item -ItemType Directory -Force models
-Copy-Item runs/detect/nut_bolt_combined/weights/best.pt models/best.pt
+python scripts/select_checkpoint.py --data data/combined.yaml --weights-dir runs/detect/nut_bolt_yolov8s_v2/weights --output models/best.pt --device 0 --batch 2
 ```
 
-If CUDA runs out of memory, retry with `--batch 4`. Do not train from scratch for this task; the script fine-tunes public pretrained weights.
+The selected checkpoint is `last.pt`: at threshold 0.62 on validation it reached precision 0.966, recall 0.924, and zero false-positive negative images. If CUDA runs out of memory, reduce batch size. Calibration and mining process images in bounded chunks to avoid oversized tensors.
+
+### Crop-classifier fine-tuning
+
+The verifier fine-tunes lightweight pretrained **YOLOv8n-cls** weights. Its custom transform pipeline resizes the already square crop without `RandomResizedCrop`, so a long bolt is not truncated. Moderate colour, rotation, scale, flip, and erasing augmentation is applied only in memory to train images. Early stopping uses patience 7.
+
+```powershell
+.venv313\Scripts\python.exe scripts\train_classifier.py --data data\classifier --model yolov8n-cls.pt --epochs 50 --patience 7 --imgsz 224 --batch 32 --workers 2 --device 0 --name crop_verifier_v1
+```
+
+Do not enable the verifier until training finishes. Copy the printed best checkpoint and calibrate its acceptance threshold on validation:
+
+```powershell
+Copy-Item runs\classify\crop_verifier_v1\weights\best.pt models\classifier_best.pt
+.venv313\Scripts\python.exe scripts\calibrate_classifier_threshold.py --data data\classifier --weights models\classifier_best.pt --split val --device 0 --max-other-fpr 0.02 --min-positive-recall 0.90
+```
+
+Use the selected threshold printed by the calibration script, then enable the second stage:
+
+```powershell
+$env:ENABLE_CROP_CLASSIFIER = "true"
+$env:CLASSIFIER_MODEL_PATH = "models/classifier_best.pt"
+$env:CLASSIFIER_CONFIDENCE_THRESHOLD = "0.54"
+uvicorn app.main:app --reload
+```
+
+After adding new manual negatives, fine-tune from the current classifier rather than restarting from generic pretrained weights:
+
+```powershell
+.venv313\Scripts\python.exe scripts\train_classifier.py --data data\classifier --model models\classifier_best.pt --epochs 20 --patience 5 --imgsz 224 --batch 32 --workers 2 --device 0 --name crop_verifier_hardneg_v2
+```
 
 ## Evaluation
 
@@ -94,11 +155,11 @@ python scripts/evaluate.py --data data/combined.yaml --weights models/best.pt --
 
 Record the command output in the submission README after the training run. Do not copy metrics published by the dataset author: report only metrics produced by this checkpoint on the held-out test split.
 
-Baseline run, trained with `yolov8n.pt` for 80 epochs on the original dataset only:
+Selected YOLOv8s checkpoint on the combined held-out test split:
 
 | Split | Precision | Recall | mAP@50 | mAP@50-95 |
 | --- | ---: | ---: | ---: | ---: |
-| Held-out test (82 images, 461 objects) | 0.949 | 0.948 | 0.951 | 0.701 |
+| Held-out test (410 images, 1,770 objects) | 0.946 | 0.943 | 0.965 | 0.798 |
 
 The dataset contains a small number of polygon labels mixed with bounding boxes. Ultralytics converts the polygons to boxes and warns about the mixed annotations during detection evaluation. This is an identified data-quality limitation of the public dataset.
 
@@ -107,23 +168,29 @@ The dataset contains a small number of polygon labels mixed with bounding boxes.
 Do not select `CONFIDENCE_THRESHOLD` by visual inspection of one image. After each training run, calibrate it on the validation split, which includes empty-label generic images and any mined false-positive examples:
 
 ```bash
-python scripts/calibrate_threshold.py --data data/combined.yaml --weights models/best.pt --split val --imgsz 640 --device 0 --batch 16 --min-recall 0.95 --max-negative-image-fpr 0.0
+python scripts/calibrate_threshold.py --data data/combined.yaml --weights models/best.pt --split val --imgsz 640 --device 0 --batch 2 --min-recall 0.90 --max-negative-image-fpr 0.0 --output runs/threshold_calibration_yolov8s_v2.json
 ```
 
-The script tests thresholds from 0.25 to 0.95, reports the lowest value that preserves at least 95% recall while allowing no negative image to produce a `nut` or `bolt`, and writes all evidence to `runs/threshold_calibration.json`. If it reports no valid threshold, retraining data—not an arbitrary higher threshold—is required.
+The strict zero-FPR validation threshold is 0.61, with recall 0.927. The API default is intentionally 0.45: it raises validation recall to 0.949, keeps precision at 0.940, and produces a false detection on only 1 of 109 negative validation images. It also passes both fixed regression cases, whereas 0.61 misses the obvious bolt. This trade-off is based on validation and regression evidence rather than one visual example.
 
 Use the reported value to run the API locally:
 
 ```powershell
-$env:CONFIDENCE_THRESHOLD = "0.65"  # Replace 0.65 with the calibrated value.
+$env:CONFIDENCE_THRESHOLD = "0.45"
 uvicorn app.main:app --reload
+```
+
+Run fixed regression cases after changing either weights or threshold:
+
+```bash
+.venv313\Scripts\python.exe scripts\regression_check.py --weights models\best.pt --classifier-weights models\classifier_best.pt --confidence 0.45 --classifier-confidence 0.54 --min-box-area-ratio 0.001
 ```
 
 Docker Compose reads the same environment variable, so the calibrated value can be passed without editing source code.
 
 ## Run the API locally
 
-The API starts even before weights exist, but `/predict` returns HTTP 503 until `models/best.pt` is present. This makes model deployment failures visible rather than returning misleading results.
+The API starts even before weights exist, but `/predict` returns HTTP 503 until `models/best.pt` is present. When `ENABLE_CROP_CLASSIFIER=true`, `models/classifier_best.pt` is also required. `/health` reports whether the verifier is enabled and which classifier path is configured.
 
 ```bash
 uvicorn app.main:app --reload
@@ -157,7 +224,7 @@ Interactive API documentation is available at `http://127.0.0.1:8000/docs`.
 
 ## Docker
 
-Place trained weights at `models/best.pt`, then run:
+Place detector weights at `models/best.pt` and, when enabled, classifier weights at `models/classifier_best.pt`, then run:
 
 ```bash
 docker compose up --build
@@ -175,5 +242,5 @@ pytest -q
 
 - The model quality depends on the coverage and annotation quality of the public training dataset. New backgrounds, fastener types, severe occlusion, blur, or very small objects may lower recall.
 - A confidence threshold is a product decision: raising it reduces false positives but can miss true objects. Detections near the threshold should be retained for error analysis or routed to manual review in a production workflow.
-- The current API intentionally ignores model classes other than `nut` and `bolt`. Empty-label negatives and threshold calibration handle images with no task object; a generic `unknown` class cannot represent every possible object.
+- The crop classifier reduces open-set false positives but cannot mathematically recognise every possible unknown object. Continue collecting production false proposals and regenerate or extend the `other` class for iterative hard-negative mining.
 - Production hardening could add request authentication, rate limiting, structured logging, model/version metadata, monitoring of confidence distributions, and asynchronous batch inference.

@@ -15,8 +15,10 @@ data/*
 !data/dataset.example.yaml
 !data/combined.yaml
 # Base checkpoints are downloaded automatically by Ultralytics during training.
-# The trained models/best.pt checkpoint is intentionally tracked for submission.
+# Trained models/best.pt and models/classifier_best.pt are tracked for submission.
 yolov8n.pt
+yolov8s.pt
+yolov8n-cls.pt
 yolo26n.pt
 runs/
 

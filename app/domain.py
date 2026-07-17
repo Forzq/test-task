@@ -28,6 +28,23 @@ class RawDetection:
     bbox: tuple[float, float, float, float]
 
 
+@dataclass(frozen=True, slots=True)
+class CropClassification:
+    """
+    A classification result for one detector-generated image crop.
+
+    Parameters
+    ----------
+    label : str
+        Classifier label such as ``bolt``, ``nut``, or ``other``.
+    confidence : float
+        Classifier confidence score in the range from zero to one.
+    """
+
+    label: str
+    confidence: float
+
+
 class DetectorProtocol(Protocol):
     """Interface implemented by detection model adapters."""
 
@@ -48,4 +65,23 @@ class DetectorProtocol(Protocol):
         -------
         list[RawDetection]
             Raw detections returned by the underlying model.
+        """
+
+
+class CropClassifierProtocol(Protocol):
+    """Interface implemented by crop-classification model adapters."""
+
+    def predict(self, image: Image) -> CropClassification:
+        """
+        Classify a detector-generated RGB crop.
+
+        Parameters
+        ----------
+        image : PIL.Image.Image
+            Square RGB crop containing a detector candidate and context.
+
+        Returns
+        -------
+        CropClassification
+            Predicted ``bolt``, ``nut``, or ``other`` class and confidence.
         """

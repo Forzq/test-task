@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import gc
 import json
 from dataclasses import asdict, dataclass
 from pathlib import Path
@@ -292,27 +293,40 @@ def _predict_boxes(
     paths = list(image_paths)
     model = YOLO(str(weights))
     predictions: dict[Path, list[Box]] = {path.resolve(): [] for path in paths}
-    results = model.predict(
-        source=[str(path) for path in paths],
-        conf=0.001,
-        imgsz=image_size,
-        device=device,
-        batch=batch_size,
-        stream=True,
-        verbose=False,
-    )
-    for image_path, result in zip(paths, results, strict=True):
-        image_path = image_path.resolve()
-        if result.boxes is None:
-            continue
-        for detection in result.boxes:
-            class_name = str(result.names[int(detection.cls[0].item())]).lower()
-            if class_name not in SUPPORTED_CLASSES:
+    chunk_size = max(batch_size, min(32, batch_size * 4))
+    for start in range(0, len(paths), chunk_size):
+        chunk = paths[start : start + chunk_size]
+        results = model.predict(
+            source=[str(path) for path in chunk],
+            conf=0.001,
+            imgsz=image_size,
+            device=device,
+            batch=batch_size,
+            stream=False,
+            verbose=False,
+        )
+        for image_path, result in zip(chunk, results, strict=True):
+            image_path = image_path.resolve()
+            if result.boxes is None:
                 continue
-            x1, y1, x2, y2 = (float(value) for value in detection.xyxy[0].tolist())
-            predictions[image_path].append(
-                Box(class_name, float(detection.conf[0].item()), (x1, y1, x2, y2))
-            )
+            for detection in result.boxes:
+                class_name = str(result.names[int(detection.cls[0].item())]).lower()
+                if class_name not in SUPPORTED_CLASSES:
+                    continue
+                x1, y1, x2, y2 = (float(value) for value in detection.xyxy[0].tolist())
+                predictions[image_path].append(
+                    Box(class_name, float(detection.conf[0].item()), (x1, y1, x2, y2))
+                )
+        del results
+    del model
+    gc.collect()
+    try:
+        import torch
+
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+    except ImportError:
+        pass
     return predictions
 
 

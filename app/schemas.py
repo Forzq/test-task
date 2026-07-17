@@ -40,4 +40,6 @@ class HealthResponse(BaseModel):
 
     status: Literal["ready", "model_unavailable"]
     model_path: str
+    classifier_enabled: bool = False
+    classifier_model_path: str | None = None
     detail: str | None = None
