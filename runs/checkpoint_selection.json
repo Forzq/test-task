@@ -1,0 +1,172 @@
+{
+  "selection_policy": "Prefer checkpoints satisfying the recall floor and FPR ceiling; then minimize negative-image FPR and maximize recall and precision.",
+  "minimum_recall": 0.9,
+  "maximum_negative_image_fpr": 0.03,
+  "selected": {
+    "checkpoint": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\runs\\detect\\nut_bolt_yolov8s_v2\\weights\\last.pt",
+    "metrics": {
+      "threshold": 0.62,
+      "precision": 0.9659685863874345,
+      "recall": 0.9236545682102628,
+      "negative_image_fpr": 0.0,
+      "negative_false_positive_images": 0
+    },
+    "satisfies_fpr": true
+  },
+  "evaluations": [
+    {
+      "checkpoint": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\runs\\detect\\nut_bolt_yolov8s_v2\\weights\\best.pt",
+      "metrics": {
+        "threshold": 0.62,
+        "precision": 0.9682539682539683,
+        "recall": 0.9161451814768461,
+        "negative_image_fpr": 0.03669724770642202,
+        "negative_false_positive_images": 4
+      },
+      "satisfies_fpr": false
+    },
+    {
+      "checkpoint": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\runs\\detect\\nut_bolt_yolov8s_v2\\weights\\last.pt",
+      "metrics": {
+        "threshold": 0.62,
+        "precision": 0.9659685863874345,
+        "recall": 0.9236545682102628,
+        "negative_image_fpr": 0.0,
+        "negative_false_positive_images": 0
+      },
+      "satisfies_fpr": true
+    },
+    {
+      "checkpoint": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\runs\\detect\\nut_bolt_yolov8s_v2\\weights\\epoch0.pt",
+      "metrics": {
+        "threshold": 0.64,
+        "precision": 0.8897715988083416,
+        "recall": 0.5607008760951189,
+        "negative_image_fpr": 0.009174311926605505,
+        "negative_false_positive_images": 1
+      },
+      "satisfies_fpr": false
+    },
+    {
+      "checkpoint": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\runs\\detect\\nut_bolt_yolov8s_v2\\weights\\epoch10.pt",
+      "metrics": {
+        "threshold": 0.3,
+        "precision": 0.8001104362230812,
+        "recall": 0.9067584480600751,
+        "negative_image_fpr": 0.08256880733944955,
+        "negative_false_positive_images": 9
+      },
+      "satisfies_fpr": false
+    },
+    {
+      "checkpoint": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\runs\\detect\\nut_bolt_yolov8s_v2\\weights\\epoch15.pt",
+      "metrics": {
+        "threshold": 0.26,
+        "precision": 0.7861020629750272,
+        "recall": 0.9061326658322904,
+        "negative_image_fpr": 0.10091743119266056,
+        "negative_false_positive_images": 11
+      },
+      "satisfies_fpr": false
+    },
+    {
+      "checkpoint": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\runs\\detect\\nut_bolt_yolov8s_v2\\weights\\epoch20.pt",
+      "metrics": {
+        "threshold": 0.44,
+        "precision": 0.8676293622141997,
+        "recall": 0.9023779724655819,
+        "negative_image_fpr": 0.1559633027522936,
+        "negative_false_positive_images": 17
+      },
+      "satisfies_fpr": false
+    },
+    {
+      "checkpoint": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\runs\\detect\\nut_bolt_yolov8s_v2\\weights\\epoch25.pt",
+      "metrics": {
+        "threshold": 0.46,
+        "precision": 0.8938271604938272,
+        "recall": 0.9061326658322904,
+        "negative_image_fpr": 0.027522935779816515,
+        "negative_false_positive_images": 3
+      },
+      "satisfies_fpr": true
+    },
+    {
+      "checkpoint": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\runs\\detect\\nut_bolt_yolov8s_v2\\weights\\epoch30.pt",
+      "metrics": {
+        "threshold": 0.46,
+        "precision": 0.9105229993698802,
+        "recall": 0.9042553191489362,
+        "negative_image_fpr": 0.07339449541284404,
+        "negative_false_positive_images": 8
+      },
+      "satisfies_fpr": false
+    },
+    {
+      "checkpoint": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\runs\\detect\\nut_bolt_yolov8s_v2\\weights\\epoch35.pt",
+      "metrics": {
+        "threshold": 0.52,
+        "precision": 0.9122257053291536,
+        "recall": 0.9105131414267835,
+        "negative_image_fpr": 0.045871559633027525,
+        "negative_false_positive_images": 5
+      },
+      "satisfies_fpr": false
+    },
+    {
+      "checkpoint": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\runs\\detect\\nut_bolt_yolov8s_v2\\weights\\epoch40.pt",
+      "metrics": {
+        "threshold": 0.52,
+        "precision": 0.9308176100628931,
+        "recall": 0.9261576971214017,
+        "negative_image_fpr": 0.009174311926605505,
+        "negative_false_positive_images": 1
+      },
+      "satisfies_fpr": true
+    },
+    {
+      "checkpoint": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\runs\\detect\\nut_bolt_yolov8s_v2\\weights\\epoch45.pt",
+      "metrics": {
+        "threshold": 0.58,
+        "precision": 0.9380245319561007,
+        "recall": 0.909261576971214,
+        "negative_image_fpr": 0.027522935779816515,
+        "negative_false_positive_images": 3
+      },
+      "satisfies_fpr": true
+    },
+    {
+      "checkpoint": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\runs\\detect\\nut_bolt_yolov8s_v2\\weights\\epoch5.pt",
+      "metrics": {
+        "threshold": 0.66,
+        "precision": 0.967032967032967,
+        "recall": 0.6057571964956195,
+        "negative_image_fpr": 0.0,
+        "negative_false_positive_images": 0
+      },
+      "satisfies_fpr": false
+    },
+    {
+      "checkpoint": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\runs\\detect\\nut_bolt_yolov8s_v2\\weights\\epoch50.pt",
+      "metrics": {
+        "threshold": 0.66,
+        "precision": 0.9684775318578136,
+        "recall": 0.9036295369211514,
+        "negative_image_fpr": 0.01834862385321101,
+        "negative_false_positive_images": 2
+      },
+      "satisfies_fpr": true
+    },
+    {
+      "checkpoint": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\runs\\detect\\nut_bolt_yolov8s_v2\\weights\\epoch55.pt",
+      "metrics": {
+        "threshold": 0.62,
+        "precision": 0.9488673139158577,
+        "recall": 0.9173967459324155,
+        "negative_image_fpr": 0.01834862385321101,
+        "negative_false_positive_images": 2
+      },
+      "satisfies_fpr": true
+    }
+  ]
+}

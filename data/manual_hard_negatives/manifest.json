@@ -1,0 +1,11 @@
+{
+  "description": "Manually confirmed user-reported hard negatives.",
+  "items": [
+    {
+      "file": "train/images/donut_sprinkles.png",
+      "source": "tests/fixtures/donut_sprinkles.png",
+      "reason": "Detector mistakes individual sugar sprinkles for tiny bolts.",
+      "split": "train"
+    }
+  ]
+}

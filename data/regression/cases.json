@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "image": "bolt_and_nut.png",
+      "counts": {
+        "bolts": 1,
+        "nuts": 1
+      }
+    },
+    {
+      "image": "pencil.jpeg",
+      "counts": {
+        "bolts": 0,
+        "nuts": 0
+      }
+    },
+    {
+      "image": "../../tests/fixtures/donut_sprinkles.png",
+      "counts": {
+        "bolts": 0,
+        "nuts": 0
+      }
+    }
+  ]
+}

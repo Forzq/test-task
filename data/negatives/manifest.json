@@ -1,0 +1,16 @@
+{
+  "sources": {
+    "coco128": "https://github.com/ultralytics/assets/releases/download/v0.0.0/coco128.zip",
+    "caltech101": "https://data.caltech.edu/records/mzrjq-6wc02/files/caltech-101.zip?download=1"
+  },
+  "source_counts": {
+    "coco128": 128,
+    "caltech101": 500
+  },
+  "split_counts": {
+    "train": 518,
+    "valid": 65,
+    "test": 45
+  },
+  "annotation_policy": "Every label file is intentionally empty: no nut or bolt."
+}

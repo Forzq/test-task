@@ -1,7 +1,7 @@
 # Python bytecode and virtual environments
 __pycache__/
 *.py[cod]
-.venv/
+.venv*/
 venv/
 
 # Test and lint caches
@@ -10,17 +10,32 @@ venv/
 .coverage
 htmlcov/
 
-# Local data, model weights, and training artefacts
-data/*
-!data/dataset.example.yaml
-!data/combined.yaml
+# Dataset payloads are large, but reproducibility metadata is tracked.
+data/**
+!data/
+!data/**/
+!data/**/*.yaml
+!data/**/*.json
+!data/README*.txt
+
+# Small curated cases are part of the application regression suite.
+!data/regression/**
+!data/manual_hard_negatives/**
+
 # Base checkpoints are downloaded automatically by Ultralytics during training.
 # Trained models/best.pt and models/classifier_best.pt are tracked for submission.
 yolov8n.pt
 yolov8s.pt
 yolov8n-cls.pt
 yolo26n.pt
-runs/
+
+# Keep metrics and exact run settings, but omit generated plots and checkpoints.
+runs/**
+!runs/
+!runs/**/
+!runs/**/*.csv
+!runs/**/*.yaml
+!runs/**/*.json
 
 # IDE and operating system files
 .idea/

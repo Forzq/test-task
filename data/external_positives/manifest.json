@@ -1,0 +1,68 @@
+{
+  "classes": [
+    "bolt",
+    "nut"
+  ],
+  "splits": {
+    "train": {
+      "images": 1539,
+      "bolts": 7695,
+      "nuts": 2437
+    },
+    "valid": {
+      "images": 104,
+      "bolts": 791,
+      "nuts": 154
+    },
+    "test": {
+      "images": 103,
+      "bolts": 762,
+      "nuts": 126
+    }
+  },
+  "source_counts": {
+    "mvtec": {
+      "train": 269,
+      "valid": 55,
+      "test": 60
+    },
+    "npu": {
+      "train_original": 270,
+      "valid_original": 34,
+      "test_original": 33,
+      "train_crops": 775
+    },
+    "bolts_and_washers": {
+      "train": 225,
+      "valid": 15,
+      "test": 10
+    }
+  },
+  "sources": {
+    "npu_bolt": {
+      "url": "https://www.kaggle.com/datasets/yartinz/npu-bolt",
+      "license": "CC0: Public Domain",
+      "mapping": {
+        "bolt_a": 0,
+        "bolt_b": 1,
+        "bolt_c": 0,
+        "vague": 0
+      }
+    },
+    "mvtec_screws": {
+      "url": "https://www.mvtec.com/research-teaching/datasets/mvtec-screws",
+      "license": "CC BY-NC-SA 4.0 (non-commercial)",
+      "mapping": "type_007 -> nut; all other types -> bolt"
+    },
+    "bolts_and_washers": {
+      "url": "https://www.kaggle.com/datasets/ahmedmohamedab/bolts-and-washers",
+      "license": "MIT",
+      "mapping": "Bolt -> bolt; Bottle and Washer boxes discarded"
+    }
+  },
+  "notes": [
+    "NPU derived crops are generated from training images only.",
+    "All derived crop boxes are clipped and renormalized programmatically.",
+    "MVTec oriented boxes are converted to enclosing axis-aligned boxes."
+  ]
+}

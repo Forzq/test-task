@@ -1,0 +1,61 @@
+{
+  "data": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\combined.yaml",
+  "detector_weights": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\models\\best.pt",
+  "configuration": {
+    "data": "data\\combined.yaml",
+    "weights": "models\\best.pt",
+    "output": "data\\classifier",
+    "image_size": 224,
+    "context_ratio": 0.2,
+    "random_crops_per_negative": 4,
+    "proposals_per_negative": 5,
+    "proposal_confidence": 0.01,
+    "max_train_per_class": 4000,
+    "max_eval_per_class": 1000,
+    "seed": 42,
+    "device": "0",
+    "batch_size": 4,
+    "chunk_size": 16,
+    "replace": true
+  },
+  "available": {
+    "train": {
+      "bolt_instances": 11425,
+      "nut_instances": 3809,
+      "negative_images": 860
+    },
+    "val": {
+      "bolt_instances": 1223,
+      "nut_instances": 374,
+      "negative_images": 109
+    },
+    "test": {
+      "bolt_instances": 1333,
+      "nut_instances": 437,
+      "negative_images": 48
+    }
+  },
+  "selected_by_split_and_class": {
+    "train": {
+      "bolt": 3809,
+      "nut": 3809,
+      "other": 3809
+    },
+    "val": {
+      "bolt": 374,
+      "nut": 374,
+      "other": 374
+    },
+    "test": {
+      "bolt": 287,
+      "nut": 287,
+      "other": 287
+    }
+  },
+  "selected_by_origin": {
+    "annotation": 8940,
+    "detector_proposal": 567,
+    "full_negative": 784,
+    "random_negative": 3119
+  }
+}
