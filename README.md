@@ -55,8 +55,7 @@ models/classifier_best.pt
 ## Запуск через Docker
 
 
-git clone --depth 1 --single-branch --branch ready-for-inference \
-  https://github.com/Forzq/test-task.git
+git clone --depth 1 --single-branch --branch ready-for-inference https://github.com/Forzq/test-task.git
 
 cd test-task
 docker compose up --build
