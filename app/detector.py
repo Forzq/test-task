@@ -22,9 +22,18 @@ class UltralyticsDetector:
     ----------
     model_path : Path
         Location of the trained YOLO weights file.
+    image_size : int
+        Square inference size passed to Ultralytics.
+    iou_threshold : float
+        Detector-level NMS intersection-over-union threshold.
     """
 
-    def __init__(self, model_path: Path) -> None:
+    def __init__(
+        self,
+        model_path: Path,
+        image_size: int = 640,
+        iou_threshold: float = 0.60,
+    ) -> None:
         """
         Store the checkpoint location without loading GPU resources yet.
 
@@ -32,8 +41,23 @@ class UltralyticsDetector:
         ----------
         model_path : Path
             Location of the trained YOLO weights file.
+        image_size : int, optional
+            Square inference dimensions used for every request.
+        iou_threshold : float, optional
+            Detector-level NMS overlap threshold.
+
+        Raises
+        ------
+        ValueError
+            Raised when inference settings are outside valid ranges.
         """
+        if image_size <= 0:
+            raise ValueError("Detector image size must be positive")
+        if not 0.0 <= iou_threshold <= 1.0:
+            raise ValueError("Detector IoU threshold must be between zero and one")
         self._model_path = model_path
+        self._image_size = image_size
+        self._iou_threshold = iou_threshold
         self._model: Any | None = None
 
     def load(self) -> None:
@@ -89,8 +113,8 @@ class UltralyticsDetector:
         results = self._model.predict(
             source=image,
             conf=confidence_threshold,
-            imgsz=640,
-            iou=0.6,
+            imgsz=self._image_size,
+            iou=self._iou_threshold,
             verbose=False,
         )
         detections: list[RawDetection] = []

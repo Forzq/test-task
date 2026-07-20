@@ -1,0 +1,80 @@
+{
+  "benchmark_policy": {
+    "purpose": "source-disjoint final evaluation",
+    "included_in_training": false,
+    "included_in_threshold_calibration": false,
+    "selection_used_model_predictions": false,
+    "frozen": true
+  },
+  "source": {
+    "title": "BOLTS",
+    "workspace": "fastener-urest",
+    "project": "bolts-v5qf3",
+    "version": 1,
+    "url": "https://universe.roboflow.com/fastener-urest/bolts-v5qf3/dataset/1",
+    "license": "CC BY 4.0",
+    "raw_images": 340,
+    "source_families": 287
+  },
+  "mapping": {
+    "bolt": "bolt",
+    "nut": "nut",
+    "lockwasher": "background",
+    "other": "background",
+    "screw": "background",
+    "washer": "background"
+  },
+  "deduplication": {
+    "max_variants_per_family": 1,
+    "offline_family_variants_removed": 53,
+    "perceptual_hash_distance": 4,
+    "training_overlaps_removed": 10,
+    "internal_near_duplicates_removed": 10,
+    "manual_quality_exclusions": 7,
+    "manual_exclusion_file": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\benchmark-dataset\\benchmark_exclusions.json",
+    "training_data": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\combined_dataset3.yaml",
+    "additional_exclusion_roots": [
+      "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\dataset3"
+    ]
+  },
+  "source_polygon_annotations_converted": 40,
+  "counts": {
+    "bolt_boxes": 254,
+    "ignored_boxes": 784,
+    "images": 260,
+    "negative_images": 111,
+    "nut_boxes": 371,
+    "positive_images": 149
+  },
+  "ignored_class_boxes": {
+    "lockwasher": 221,
+    "other": 133,
+    "screw": 272,
+    "washer": 158
+  },
+  "dataset_fingerprint_sha256": "AB0F0B36C40DEFF84446345BF51A25C4FD2FB881B13DEF49DCE04069F71DE25B",
+  "review": {
+    "status": "complete",
+    "reviewed_images": 260,
+    "worksheet": "review.csv",
+    "sheets": [
+      "review_sheets/sheet_01.jpg",
+      "review_sheets/sheet_02.jpg",
+      "review_sheets/sheet_03.jpg",
+      "review_sheets/sheet_04.jpg",
+      "review_sheets/sheet_05.jpg",
+      "review_sheets/sheet_06.jpg",
+      "review_sheets/sheet_07.jpg",
+      "review_sheets/sheet_08.jpg",
+      "review_sheets/sheet_09.jpg",
+      "review_sheets/sheet_10.jpg",
+      "review_sheets/sheet_11.jpg",
+      "review_sheets/sheet_12.jpg",
+      "review_sheets/sheet_13.jpg",
+      "review_sheets/sheet_14.jpg",
+      "review_sheets/sheet_15.jpg",
+      "review_sheets/sheet_16.jpg",
+      "review_sheets/sheet_17.jpg"
+    ]
+  }
+}

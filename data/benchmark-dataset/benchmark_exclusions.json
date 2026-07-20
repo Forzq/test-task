@@ -1,0 +1,9 @@
+{
+  "bolt-70488_1280_jpg": "Ambiguous crop: the large object appears to be a bolt end but is annotated as a nut.",
+  "image000012_jpg": "Incorrect labels: non-nut fastener inserts are annotated as nuts.",
+  "image000013_JPG": "Incorrect labels: plain washers are annotated as nuts.",
+  "image000117_jpg": "Incorrect label: a threaded stud is annotated as a washer, making the image an invalid negative.",
+  "image000175_jpg": "Ambiguous overlapping bolt and nut labels on one assembled fastener.",
+  "image000199_jpg": "Incorrect label: the bolt head is additionally annotated as a nut in a bolt-versus-screw diagram.",
+  "image1_jpg": "Incorrect label: a flat washer is annotated as a nut next to the bolt."
+}

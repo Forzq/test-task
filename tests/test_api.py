@@ -96,6 +96,88 @@ class SprinkleFalsePositiveDetector:
         ]
 
 
+class OverlapDetector:
+    """Detector fixture containing same-class and cross-class overlaps."""
+
+    def predict(self, image: Image.Image, confidence_threshold: float) -> list[RawDetection]:
+        """
+        Return two duplicate bolts and one overlapping nut.
+
+        Parameters
+        ----------
+        image : PIL.Image.Image
+            Decoded request image.
+        confidence_threshold : float
+            Lowest configured per-class detector threshold.
+
+        Returns
+        -------
+        list[RawDetection]
+            Overlapping fixture detections for final-NMS testing.
+        """
+        return [
+            RawDetection("bolt", 0.90, (2.0, 2.0, 22.0, 22.0)),
+            RawDetection("nut", 0.85, (2.0, 2.0, 22.0, 22.0)),
+            RawDetection("bolt", 0.80, (3.0, 3.0, 23.0, 23.0)),
+        ]
+
+
+class ClassThresholdDetector:
+    """Detector fixture used to verify independent bolt and nut thresholds."""
+
+    def predict(self, image: Image.Image, confidence_threshold: float) -> list[RawDetection]:
+        """
+        Return equally confident candidates of both supported classes.
+
+        Parameters
+        ----------
+        image : PIL.Image.Image
+            Decoded request image.
+        confidence_threshold : float
+            Minimum threshold passed to the low-level detector.
+
+        Returns
+        -------
+        list[RawDetection]
+            One bolt and one nut at confidence 0.60.
+        """
+        assert confidence_threshold == 0.55
+        return [
+            RawDetection("bolt", 0.60, (1.0, 1.0, 12.0, 12.0)),
+            RawDetection("nut", 0.60, (18.0, 18.0, 31.0, 31.0)),
+        ]
+
+
+class MultiScaleClassifier:
+    """Classifier fixture returning probabilities for two crop contexts."""
+
+    def __init__(self) -> None:
+        """Initialise the ordered context-call counter."""
+        self.calls = 0
+
+    def predict(self, image: Image.Image) -> CropClassification:
+        """
+        Return context-specific distributions that aggregate to a bolt.
+
+        Parameters
+        ----------
+        image : PIL.Image.Image
+            Tight or contextual crop.
+
+        Returns
+        -------
+        CropClassification
+            Probability-bearing fixture classification.
+        """
+        distributions = [
+            {"bolt": 0.90, "nut": 0.05, "other": 0.05},
+            {"bolt": 0.60, "nut": 0.05, "other": 0.35},
+        ]
+        probabilities = distributions[self.calls % len(distributions)]
+        self.calls += 1
+        return CropClassification("bolt", probabilities["bolt"], probabilities)
+
+
 def _image_bytes(image_format: str = "PNG") -> bytes:
     """
     Create an in-memory image suitable for multipart request tests.
@@ -205,3 +287,71 @@ def test_donut_sprinkles_are_rejected_by_relative_area() -> None:
         "objects": [],
         "counts": {"nuts": 0, "bolts": 0},
     }
+
+
+def test_final_nms_suppresses_only_same_class_duplicates() -> None:
+    """Verify that overlapping bolt duplicates do not suppress a nut."""
+    app = create_app(
+        settings=Settings(
+            model_path=Path(__file__),
+            enable_crop_classifier=False,
+            final_nms_iou_threshold=0.45,
+        ),
+        detector=OverlapDetector(),
+    )
+    response = TestClient(app).post(
+        "/predict",
+        files={"image": ("overlap.png", _image_bytes(), "image/png")},
+    )
+
+    assert response.status_code == 200
+    assert response.json() == {
+        "objects": [
+            {"class": "bolt", "confidence": 0.9, "bbox": [2, 2, 22, 22]},
+            {"class": "nut", "confidence": 0.85, "bbox": [2, 2, 22, 22]},
+        ],
+        "counts": {"nuts": 1, "bolts": 1},
+    }
+
+
+def test_detector_thresholds_are_applied_per_class() -> None:
+    """Verify that a stricter bolt threshold does not remove an equal-score nut."""
+    app = create_app(
+        settings=Settings(
+            model_path=Path(__file__),
+            enable_crop_classifier=False,
+            bolt_confidence_threshold=0.70,
+            nut_confidence_threshold=0.55,
+        ),
+        detector=ClassThresholdDetector(),
+    )
+    response = TestClient(app).post(
+        "/predict",
+        files={"image": ("thresholds.png", _image_bytes(), "image/png")},
+    )
+
+    assert response.status_code == 200
+    assert response.json()["counts"] == {"nuts": 1, "bolts": 0}
+
+
+def test_multiscale_crop_probabilities_are_averaged() -> None:
+    """Verify that tight and contextual crop probabilities are aggregated."""
+    classifier = MultiScaleClassifier()
+    app = create_app(
+        settings=Settings(
+            model_path=Path(__file__),
+            classifier_crop_contexts=(0.20, 1.00),
+            bolt_classifier_threshold=0.70,
+        ),
+        detector=OverlapDetector(),
+        classifier=classifier,
+    )
+    response = TestClient(app).post(
+        "/predict",
+        files={"image": ("multiscale.png", _image_bytes(), "image/png")},
+    )
+
+    assert response.status_code == 200
+    assert classifier.calls == 6
+    assert response.json()["counts"] == {"nuts": 0, "bolts": 1}
+    assert response.json()["objects"][0]["confidence"] == 0.75

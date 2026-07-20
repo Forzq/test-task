@@ -5,19 +5,19 @@
   ],
   "splits": {
     "train": {
-      "images": 1539,
-      "bolts": 7695,
-      "nuts": 2437
+      "images": 494,
+      "bolts": 2790,
+      "nuts": 982
     },
     "valid": {
-      "images": 104,
-      "bolts": 791,
-      "nuts": 154
+      "images": 70,
+      "bolts": 226,
+      "nuts": 194
     },
     "test": {
-      "images": 103,
-      "bolts": 762,
-      "nuts": 126
+      "images": 70,
+      "bolts": 166,
+      "nuts": 202
     }
   },
   "source_counts": {
@@ -26,12 +26,6 @@
       "valid": 55,
       "test": 60
     },
-    "npu": {
-      "train_original": 270,
-      "valid_original": 34,
-      "test_original": 33,
-      "train_crops": 775
-    },
     "bolts_and_washers": {
       "train": 225,
       "valid": 15,
@@ -39,20 +33,15 @@
     }
   },
   "sources": {
-    "npu_bolt": {
+    "npu_bolt_excluded": {
       "url": "https://www.kaggle.com/datasets/yartinz/npu-bolt",
       "license": "CC0: Public Domain",
-      "mapping": {
-        "bolt_a": 0,
-        "bolt_b": 1,
-        "bolt_c": 0,
-        "vague": 0
-      }
+      "reason": "Annotations describe bolt head, side, blur, and nut parts rather than one complete physical bolt per box."
     },
     "mvtec_screws": {
       "url": "https://www.mvtec.com/research-teaching/datasets/mvtec-screws",
       "license": "CC BY-NC-SA 4.0 (non-commercial)",
-      "mapping": "type_007 -> nut; all other types -> bolt"
+      "mapping": "type_008 -> bolt; type_007/type_009/type_010/type_011 -> nut; all screw types ignored as background"
     },
     "bolts_and_washers": {
       "url": "https://www.kaggle.com/datasets/ahmedmohamedab/bolts-and-washers",
@@ -61,8 +50,9 @@
     }
   },
   "notes": [
-    "NPU derived crops are generated from training images only.",
-    "All derived crop boxes are clipped and renormalized programmatically.",
-    "MVTec oriented boxes are converted to enclosing axis-aligned boxes."
+    "The ontology requires one complete physical bolt or nut per box.",
+    "NPU is excluded because its part-level boxes cannot be merged reliably.",
+    "MVTec oriented boxes are converted to enclosing axis-aligned boxes.",
+    "MVTec screws and Bolts/Washers bottles and washers are hard-negative background."
   ]
 }

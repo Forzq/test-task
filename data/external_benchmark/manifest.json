@@ -1,0 +1,52 @@
+{
+  "benchmark_policy": {
+    "purpose": "evaluation_only",
+    "included_in_training": false,
+    "included_in_threshold_calibration": false,
+    "source_split": "test"
+  },
+  "source": {
+    "title": "Mechanical Parts Dataset 2022",
+    "doi": "10.5281/zenodo.7504801",
+    "url": "https://zenodo.org/records/7504801",
+    "license": "CC BY 4.0",
+    "archive_md5": "fc2bfa33c4d0439188cb5974694a4520",
+    "source_classes": {
+      "0": "bearing",
+      "1": "bolt",
+      "2": "gear",
+      "3": "nut"
+    },
+    "mapping": {
+      "Bolt": "bolt",
+      "Nut": "nut"
+    },
+    "ignored_as_background": [
+      "Bearing",
+      "Gear"
+    ]
+  },
+  "images": 225,
+  "image_counts": {
+    "positive": 105,
+    "negative_bearing_or_gear": 120
+  },
+  "target_boxes": {
+    "bolt": 326,
+    "nut": 249
+  },
+  "source_boxes": {
+    "bolt": 326,
+    "nut": 249,
+    "bearing": 206,
+    "gear": 319
+  },
+  "duplicates_removed": {
+    "against_training": [],
+    "within_benchmark": []
+  },
+  "manual_review": {
+    "status": "source annotations retained; spot-check recommended",
+    "worksheet": "review.csv"
+  }
+}

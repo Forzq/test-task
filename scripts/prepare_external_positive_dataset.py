@@ -18,6 +18,13 @@ from PIL import Image
 
 
 CLASS_NAMES = ("bolt", "nut")
+MVTEC_CLASS_MAPPING = {
+    7: 1,   # Nut.
+    8: 0,   # Bolt.
+    9: 1,   # Large nut.
+    10: 1,  # Nut.
+    11: 1,  # Nut.
+}
 SPLITS = ("train", "valid", "test")
 NPU_CLASS_MAPPING = {
     "bolt_a": 0,  # Bolt head.
@@ -125,7 +132,10 @@ def build_parser() -> argparse.ArgumentParser:
         Parser with repository-local source and output defaults.
     """
     parser = argparse.ArgumentParser(
-        description="Convert NPU-BOLT, MVTec Screws, and Bolts/Washers to YOLO."
+        description=(
+            "Build a strict whole-object dataset from MVTec nuts and "
+            "Bolts/Washers bolts while excluding incompatible part labels."
+        )
     )
     parser.add_argument(
         "--sources",
@@ -139,17 +149,10 @@ def build_parser() -> argparse.ArgumentParser:
         default=Path("data/external_positives"),
         help="Generated two-class YOLO dataset directory.",
     )
-    parser.add_argument("--seed", type=int, default=42, help="Deterministic NPU split seed.")
-    parser.add_argument(
-        "--max-npu-crops",
-        type=int,
-        default=800,
-        help="Maximum number of target-centred NPU training crops.",
-    )
     parser.add_argument(
         "--minimum-images",
         type=int,
-        default=1000,
+        default=500,
         help="Fail unless at least this many annotated images are generated.",
     )
     parser.add_argument(
@@ -310,11 +313,12 @@ def _convert_mvtec(
             boxes = [
                 _oriented_to_axis_aligned(
                     annotation["bbox"],
-                    1 if int(annotation["category_id"]) == 7 else 0,
+                    MVTEC_CLASS_MAPPING[int(annotation["category_id"])],
                     width,
                     height,
                 )
                 for annotation in annotations[image_id]
+                if int(annotation["category_id"]) in MVTEC_CLASS_MAPPING
             ]
             file_name = str(image_record["file_name"])
             _copy_example(
@@ -612,8 +616,6 @@ def _convert_bolts_and_washers(
                 width, height = image.size
             label_path = source_root / source_split / "labels" / f"{image_path.stem}.txt"
             boxes = _parse_yolo_boxes(label_path, width, height)
-            if not boxes:
-                continue
             _copy_example(
                 image_path,
                 output,
@@ -655,15 +657,21 @@ def _write_metadata(
         yaml.safe_dump(data_yaml, allow_unicode=True, sort_keys=False), encoding="utf-8"
     )
     sources = {
-        "npu_bolt": {
+        "npu_bolt_excluded": {
             "url": "https://www.kaggle.com/datasets/yartinz/npu-bolt",
             "license": "CC0: Public Domain",
-            "mapping": NPU_CLASS_MAPPING,
+            "reason": (
+                "Annotations describe bolt head, side, blur, and nut parts rather "
+                "than one complete physical bolt per box."
+            ),
         },
         "mvtec_screws": {
             "url": "https://www.mvtec.com/research-teaching/datasets/mvtec-screws",
             "license": "CC BY-NC-SA 4.0 (non-commercial)",
-            "mapping": "type_007 -> nut; all other types -> bolt",
+            "mapping": (
+                "type_008 -> bolt; type_007/type_009/type_010/type_011 -> nut; "
+                "all screw types ignored as background"
+            ),
         },
         "bolts_and_washers": {
             "url": "https://www.kaggle.com/datasets/ahmedmohamedab/bolts-and-washers",
@@ -677,9 +685,10 @@ def _write_metadata(
         "source_counts": source_counts,
         "sources": sources,
         "notes": [
-            "NPU derived crops are generated from training images only.",
-            "All derived crop boxes are clipped and renormalized programmatically.",
+            "The ontology requires one complete physical bolt or nut per box.",
+            "NPU is excluded because its part-level boxes cannot be merged reliably.",
             "MVTec oriented boxes are converted to enclosing axis-aligned boxes.",
+            "MVTec screws and Bolts/Washers bottles and washers are hard-negative background.",
         ],
     }
     (output / "manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
@@ -707,23 +716,19 @@ def prepare(arguments: argparse.Namespace) -> dict[str, SplitStatistics]:
     source_root = arguments.sources.resolve()
     output = arguments.output.resolve()
     expected = {
-        "npu": source_root / "npu_bolt",
         "mvtec": source_root / "mvtec_screws_nuts",
         "bolts_and_washers": source_root / "bolts_and_washers",
     }
     missing = [str(path) for path in expected.values() if not path.is_dir()]
     if missing:
         raise ValueError(f"Extracted source directories are missing: {', '.join(missing)}")
-    if arguments.max_npu_crops < 0 or arguments.minimum_images <= 0:
-        raise ValueError("Crop limit cannot be negative and minimum-images must be positive")
+    if arguments.minimum_images <= 0:
+        raise ValueError("minimum-images must be positive")
 
     _prepare_output(output, arguments.replace)
     statistics = {split: SplitStatistics() for split in SPLITS}
     source_counts = {
         "mvtec": _convert_mvtec(expected["mvtec"], output, statistics),
-        "npu": _convert_npu(
-            expected["npu"], output, statistics, arguments.seed, arguments.max_npu_crops
-        ),
         "bolts_and_washers": _convert_bolts_and_washers(
             expected["bolts_and_washers"], output, statistics
         ),

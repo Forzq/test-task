@@ -1,0 +1,91 @@
+{
+  "purpose": "source-balanced bolt/nut/other crop-classifier training",
+  "sources": {
+    "legacy": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\classifier",
+    "dataset3": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\classifier_dataset3_v9"
+  },
+  "configuration": {
+    "train_per_source_class": 4000,
+    "val_per_source_class": 999,
+    "test_per_source_class": 572,
+    "seed": 42
+  },
+  "input_images": {
+    "legacy": 16719,
+    "dataset3": 33000
+  },
+  "cross_source_exact_overlaps_removed": {
+    "train": {
+      "bolt": 894,
+      "nut": 864,
+      "other": 88
+    },
+    "val": {
+      "bolt": 332,
+      "nut": 295,
+      "other": 15
+    },
+    "test": {
+      "bolt": 239,
+      "nut": 206,
+      "other": 24
+    }
+  },
+  "selected_by_source_split_class": {
+    "legacy": {
+      "train": {
+        "bolt": 4000,
+        "nut": 4000,
+        "other": 4000
+      },
+      "val": {
+        "bolt": 999,
+        "nut": 999,
+        "other": 999
+      },
+      "test": {
+        "bolt": 572,
+        "nut": 572,
+        "other": 572
+      }
+    },
+    "dataset3": {
+      "train": {
+        "bolt": 4000,
+        "nut": 4000,
+        "other": 4000
+      },
+      "val": {
+        "bolt": 999,
+        "nut": 999,
+        "other": 999
+      },
+      "test": {
+        "bolt": 572,
+        "nut": 572,
+        "other": 572
+      }
+    }
+  },
+  "selected_totals": {
+    "train": {
+      "bolt": 8000,
+      "nut": 8000,
+      "other": 8000
+    },
+    "val": {
+      "bolt": 1998,
+      "nut": 1998,
+      "other": 1998
+    },
+    "test": {
+      "bolt": 1144,
+      "nut": 1144,
+      "other": 1144
+    }
+  },
+  "exact_duplicate_groups": 0,
+  "cross_split_duplicate_groups": 0,
+  "cross_class_duplicate_groups": 0,
+  "dataset_fingerprint_sha256": "8C6CC740BE4FCFF02041C40BFFB1CD7CAE175402FE14AB50C497F4EC8757B7BC"
+}

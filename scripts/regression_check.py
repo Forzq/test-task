@@ -62,7 +62,13 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("--confidence", type=float, default=0.45)
     parser.add_argument("--classifier-confidence", type=float, default=0.54)
+    parser.add_argument("--bolt-detector-threshold", type=float, default=None)
+    parser.add_argument("--nut-detector-threshold", type=float, default=None)
+    parser.add_argument("--bolt-classifier-threshold", type=float, default=None)
+    parser.add_argument("--nut-classifier-threshold", type=float, default=None)
+    parser.add_argument("--contexts", type=float, nargs="+", default=[0.20])
     parser.add_argument("--min-box-area-ratio", type=float, default=0.001)
+    parser.add_argument("--nms-iou", type=float, default=0.45)
     return parser
 
 
@@ -126,6 +132,24 @@ def run(arguments: argparse.Namespace) -> bool:
         classifier_crop_context=0.20,
         classifier_image_size=224,
         min_box_area_ratio=arguments.min_box_area_ratio,
+        detector_class_thresholds={
+            "bolt": arguments.bolt_detector_threshold
+            if arguments.bolt_detector_threshold is not None
+            else arguments.confidence,
+            "nut": arguments.nut_detector_threshold
+            if arguments.nut_detector_threshold is not None
+            else arguments.confidence,
+        },
+        classifier_class_thresholds={
+            "bolt": arguments.bolt_classifier_threshold
+            if arguments.bolt_classifier_threshold is not None
+            else arguments.classifier_confidence,
+            "nut": arguments.nut_classifier_threshold
+            if arguments.nut_classifier_threshold is not None
+            else arguments.classifier_confidence,
+        },
+        classifier_crop_contexts=tuple(arguments.contexts),
+        final_nms_iou_threshold=arguments.nms_iou,
     )
     passed = True
     for case in cases:
@@ -155,9 +179,21 @@ def main() -> None:
         or not arguments.cases.is_file()
     ):
         raise ValueError("Detector, classifier, and regression case files must exist")
-    for name in ("confidence", "classifier_confidence", "min_box_area_ratio"):
-        if not 0.0 <= getattr(arguments, name) <= 1.0:
+    for name in (
+        "confidence",
+        "classifier_confidence",
+        "bolt_detector_threshold",
+        "nut_detector_threshold",
+        "bolt_classifier_threshold",
+        "nut_classifier_threshold",
+        "min_box_area_ratio",
+        "nms_iou",
+    ):
+        value = getattr(arguments, name)
+        if value is not None and not 0.0 <= value <= 1.0:
             raise ValueError(f"{name.replace('_', '-')} must be between zero and one")
+    if not arguments.contexts or any(context < 0.0 for context in arguments.contexts):
+        raise ValueError("contexts must contain non-negative values")
     if not run(arguments):
         raise SystemExit(1)
 

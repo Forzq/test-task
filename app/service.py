@@ -1,51 +1,63 @@
-"""Image validation, class mapping, and prediction aggregation logic."""
+"""Application service orchestrating the complete inference pipeline."""
 
 from __future__ import annotations
 
-from io import BytesIO
+from typing import Mapping
 
-from PIL import Image, UnidentifiedImageError
+from PIL import Image
 
-from app.domain import CropClassifierProtocol, DetectorProtocol
-from app.image_utils import extract_square_crop
+from app.domain import CropClassifierProtocol, DetectorProtocol, RawDetection
+from app.image_utils import SquareCropExtractor
+from app.pipeline import (
+    ClassNameMapper,
+    ClassThresholds,
+    CropCandidateVerifier,
+    DetectionPostProcessor,
+    ImageDecoder,
+    UnsupportedImageError,
+)
 from app.schemas import DetectedObject, DetectionCounts, PredictionResponse
 
-
-class UnsupportedImageError(ValueError):
-    """Raised when an uploaded file is not a supported JPEG or PNG image."""
+__all__ = ["DetectionService", "UnsupportedImageError"]
 
 
 class DetectionService:
     """
-    Application service that prepares images and formats model predictions.
+    Coordinate image decoding, detection, verification, and response assembly.
 
     Parameters
     ----------
     detector : DetectorProtocol
-        Loaded model adapter responsible for low-level object detection.
+        Loaded adapter that produces bounding-box proposals.
     confidence_threshold : float
-        Lowest confidence score allowed in the API response.
+        Legacy detector threshold used when class-specific values are absent.
     max_upload_size_bytes : int
-        Maximum accepted size of an uploaded image.
+        Maximum accepted encoded upload size.
     crop_classifier : CropClassifierProtocol, optional
-        Second-stage classifier that can reject candidates as ``other``.
-    classifier_confidence_threshold : float
-        Minimum classifier confidence required to retain a candidate.
-    classifier_crop_context : float
-        Context added around each detector bounding box.
-    classifier_image_size : int
-        Square crop size passed to the classifier.
-    min_box_area_ratio : float
-        Minimum candidate area divided by complete image area.
-    """
+        Optional second-stage classifier that can reject proposals as ``other``.
+    classifier_confidence_threshold : float, optional
+        Legacy classifier threshold used when class-specific values are absent.
+    classifier_crop_context : float, optional
+        Legacy single crop context retained for backward compatibility.
+    classifier_image_size : int, optional
+        Width and height of classifier crops.
+    min_box_area_ratio : float, optional
+        Minimum proposal area relative to the complete source image.
+    detector_class_thresholds : Mapping[str, float], optional
+        Independent detector thresholds for ``bolt`` and ``nut``.
+    classifier_class_thresholds : Mapping[str, float], optional
+        Independent classifier thresholds for ``bolt`` and ``nut``.
+    classifier_crop_contexts : tuple[float, ...], optional
+        Context ratios aggregated by the crop verifier.
+    final_nms_iou_threshold : float, optional
+        Same-class IoU above which the weaker duplicate is removed.
 
-    _CLASS_ALIASES = {
-        "nut": "nut",
-        "nuts": "nut",
-        "bolt": "bolt",
-        "bolts": "bolt",
-    }
-    _SUPPORTED_FORMATS = {"JPEG", "PNG"}
+    Notes
+    -----
+    This class intentionally contains orchestration only. Validation, crop
+    geometry, class mapping, score aggregation, and NMS are delegated to focused
+    components from :mod:`app.pipeline`.
+    """
 
     def __init__(
         self,
@@ -57,188 +69,209 @@ class DetectionService:
         classifier_crop_context: float = 0.20,
         classifier_image_size: int = 224,
         min_box_area_ratio: float = 0.001,
+        detector_class_thresholds: Mapping[str, float] | None = None,
+        classifier_class_thresholds: Mapping[str, float] | None = None,
+        classifier_crop_contexts: tuple[float, ...] | None = None,
+        final_nms_iou_threshold: float = 0.45,
     ) -> None:
         """
-        Initialise the service with a detector and upload constraints.
+        Build reusable pipeline components from runtime configuration.
 
         Parameters
         ----------
         detector : DetectorProtocol
-            Model adapter used for inference.
+            Detector adapter used for proposal generation.
         confidence_threshold : float
-            Minimum confidence retained in responses.
+            Fallback detector confidence threshold.
         max_upload_size_bytes : int
-            Maximum number of bytes allowed in an uploaded image.
+            Maximum accepted upload size in bytes.
         crop_classifier : CropClassifierProtocol, optional
-            Optional second-stage candidate verifier.
+            Optional second-stage crop classifier.
         classifier_confidence_threshold : float, optional
-            Minimum classification confidence required for acceptance.
+            Fallback crop-classifier confidence threshold.
         classifier_crop_context : float, optional
-            Extra context added around detector boxes.
+            Backward-compatible single context ratio.
         classifier_image_size : int, optional
-            Square crop width and height.
+            Square crop output size.
         min_box_area_ratio : float, optional
-            Minimum relative area retained before crop classification.
+            Minimum relative proposal area.
+        detector_class_thresholds : Mapping[str, float], optional
+            Class-specific detector thresholds.
+        classifier_class_thresholds : Mapping[str, float], optional
+            Class-specific classifier thresholds.
+        classifier_crop_contexts : tuple[float, ...], optional
+            Multi-context verifier configuration.
+        final_nms_iou_threshold : float, optional
+            Same-class duplicate suppression threshold.
         """
         self._detector = detector
-        self._confidence_threshold = confidence_threshold
-        self._max_upload_size_bytes = max_upload_size_bytes
-        self._crop_classifier = crop_classifier
-        self._classifier_confidence_threshold = classifier_confidence_threshold
-        self._classifier_crop_context = classifier_crop_context
-        self._classifier_image_size = classifier_image_size
-        self._min_box_area_ratio = min_box_area_ratio
+        self._class_mapper = ClassNameMapper.nut_and_bolt()
+        self._detector_thresholds = self._resolve_thresholds(
+            fallback=confidence_threshold,
+            overrides=detector_class_thresholds,
+        )
+        self._decoder = ImageDecoder(max_upload_size_bytes)
+        self._postprocessor = DetectionPostProcessor(
+            min_box_area_ratio=min_box_area_ratio,
+            nms_iou_threshold=final_nms_iou_threshold,
+        )
+        self._verifier = self._build_verifier(
+            classifier=crop_classifier,
+            fallback_threshold=classifier_confidence_threshold,
+            threshold_overrides=classifier_class_thresholds,
+            contexts=classifier_crop_contexts or (classifier_crop_context,),
+            image_size=classifier_image_size,
+        )
 
     def predict(self, image_bytes: bytes) -> PredictionResponse:
         """
-        Validate an image, run inference, and calculate class counts.
+        Execute the production pipeline for one encoded image.
 
         Parameters
         ----------
         image_bytes : bytes
-            Raw bytes received from an HTTP image upload.
+            JPEG or PNG bytes received from the HTTP layer.
 
         Returns
         -------
         PredictionResponse
-            Accepted nut and bolt detections with aggregated counts.
+            Accepted objects and final counts for both public classes.
 
         Raises
         ------
         UnsupportedImageError
-            Raised when the file is empty, too large, corrupt, or not JPEG/PNG.
+            Raised when upload validation or decoding fails.
         """
-        image = self._decode_image(image_bytes)
-        raw_detections = self._detector.predict(image, self._confidence_threshold)
+        image = self._decoder.decode(image_bytes)
+        detections = self._detector.predict(
+            image,
+            self._detector_thresholds.minimum,
+        )
+        objects = []
+        for detection in detections:
+            accepted = self._process_detection(image, detection)
+            if accepted is not None:
+                objects.append(accepted)
 
-        objects: list[DetectedObject] = []
-        counts = {"nuts": 0, "bolts": 0}
-
-        for detection in raw_detections:
-            class_name = self._normalise_class_name(detection.label)
-            if class_name is None or detection.confidence < self._confidence_threshold:
-                continue
-            if self._relative_box_area(detection.bbox, image.size) < self._min_box_area_ratio:
-                continue
-
-            final_confidence = detection.confidence
-            if self._crop_classifier is not None:
-                try:
-                    crop = extract_square_crop(
-                        image=image,
-                        bbox=detection.bbox,
-                        context_ratio=self._classifier_crop_context,
-                        output_size=self._classifier_image_size,
-                    )
-                except ValueError:
-                    continue
-                classification = self._crop_classifier.predict(crop)
-                verified_class = self._normalise_class_name(classification.label)
-                if (
-                    verified_class is None
-                    or classification.confidence < self._classifier_confidence_threshold
-                ):
-                    continue
-                class_name = verified_class
-                final_confidence = min(detection.confidence, classification.confidence)
-
-            bbox = [max(0, round(coordinate)) for coordinate in detection.bbox]
-            objects.append(
-                DetectedObject(
-                    class_name=class_name,
-                    confidence=round(final_confidence, 4),
-                    bbox=bbox,
-                )
-            )
-            counts[f"{class_name}s"] += 1
-
+        objects = self._postprocessor.suppress_duplicates(objects)
         return PredictionResponse(
             objects=objects,
-            counts=DetectionCounts(**counts),
+            counts=DetectionCounts(
+                nuts=sum(item.class_name == "nut" for item in objects),
+                bolts=sum(item.class_name == "bolt" for item in objects),
+            ),
         )
 
-    def _decode_image(self, image_bytes: bytes) -> Image.Image:
+    def _process_detection(
+        self,
+        image: Image.Image,
+        detection: RawDetection,
+    ) -> DetectedObject | None:
         """
-        Decode a JPEG or PNG byte stream into a safe RGB image.
+        Apply class, confidence, geometry, and optional crop verification.
 
         Parameters
         ----------
-        image_bytes : bytes
-            Raw uploaded file content.
+        image : PIL.Image.Image
+            Decoded complete source image.
+        detection : RawDetection
+            One detector proposal.
 
         Returns
         -------
-        PIL.Image.Image
-            Decoded image converted to RGB colour mode.
-
-        Raises
-        ------
-        UnsupportedImageError
-            Raised when size or image format validation fails.
+        DetectedObject or None
+            Public response object when accepted, otherwise ``None``.
         """
-        if not image_bytes:
-            raise UnsupportedImageError("The uploaded file is empty.")
-        if len(image_bytes) > self._max_upload_size_bytes:
-            raise UnsupportedImageError(
-                f"The uploaded image exceeds {self._max_upload_size_bytes} bytes."
-            )
+        class_name = self._class_mapper.normalise(detection.label)
+        if class_name is None:
+            return None
+        if not self._detector_thresholds.accepts(
+            class_name, detection.confidence
+        ):
+            return None
+        if not self._postprocessor.has_sufficient_area(detection, image.size):
+            return None
 
-        try:
-            with Image.open(BytesIO(image_bytes)) as opened_image:
-                if opened_image.format not in self._SUPPORTED_FORMATS:
-                    raise UnsupportedImageError("Only JPEG and PNG images are supported.")
-                return opened_image.convert("RGB")
-        except UnidentifiedImageError as error:
-            raise UnsupportedImageError("The uploaded file is not a valid image.") from error
+        final_confidence = detection.confidence
+        if self._verifier is not None:
+            verified = self._verifier.verify(image, detection)
+            if verified is None:
+                return None
+            class_name = verified.class_name
+            final_confidence = min(detection.confidence, verified.confidence)
 
-    def _normalise_class_name(self, label: str) -> str | None:
+        return self._postprocessor.to_response_object(
+            detection=detection,
+            class_name=class_name,
+            confidence=final_confidence,
+        )
+
+    def _build_verifier(
+        self,
+        classifier: CropClassifierProtocol | None,
+        fallback_threshold: float,
+        threshold_overrides: Mapping[str, float] | None,
+        contexts: tuple[float, ...],
+        image_size: int,
+    ) -> CropCandidateVerifier | None:
         """
-        Convert a model label to one of the public API classes.
+        Create the second-stage verifier only when a classifier is enabled.
 
         Parameters
         ----------
-        label : str
-            Raw label returned by the detection model.
+        classifier : CropClassifierProtocol or None
+            Optional classifier adapter.
+        fallback_threshold : float
+            Threshold used for classes without explicit overrides.
+        threshold_overrides : Mapping[str, float] or None
+            Per-class classifier thresholds.
+        contexts : tuple[float, ...]
+            Context ratios evaluated around every proposal.
+        image_size : int
+            Square crop dimensions.
 
         Returns
         -------
-        str or None
-            Canonical ``nut`` or ``bolt`` label, or None for unknown classes.
-
-        Notes
-        -----
-        Unknown model classes are intentionally excluded from the API response.
-        This prevents unsupported object types from being silently counted.
+        CropCandidateVerifier or None
+            Configured verifier, or ``None`` for detector-only operation.
         """
-        return self._CLASS_ALIASES.get(label.strip().lower())
+        if classifier is None:
+            return None
+        return CropCandidateVerifier(
+            classifier=classifier,
+            crop_extractor=SquareCropExtractor(output_size=image_size),
+            contexts=contexts,
+            thresholds=self._resolve_thresholds(
+                fallback=fallback_threshold,
+                overrides=threshold_overrides,
+            ),
+            class_mapper=self._class_mapper,
+        )
 
     @staticmethod
-    def _relative_box_area(
-        bbox: tuple[float, float, float, float],
-        image_size: tuple[int, int],
-    ) -> float:
+    def _resolve_thresholds(
+        fallback: float,
+        overrides: Mapping[str, float] | None,
+    ) -> ClassThresholds:
         """
-        Calculate a clipped bounding-box area relative to the full image.
+        Merge a backward-compatible fallback with per-class overrides.
 
         Parameters
         ----------
-        bbox : tuple[float, float, float, float]
-            Candidate box in ``x1, y1, x2, y2`` coordinates.
-        image_size : tuple[int, int]
-            Source image width and height.
+        fallback : float
+            Default value assigned to both supported classes.
+        overrides : Mapping[str, float] or None
+            Optional explicit class-specific values.
 
         Returns
         -------
-        float
-            Clipped box area divided by image area, or zero for invalid boxes.
+        ClassThresholds
+            Validated bolt and nut threshold policy.
         """
-        image_width, image_height = image_size
-        x1, y1, x2, y2 = bbox
-        clipped_x1 = max(0.0, min(float(image_width), x1))
-        clipped_y1 = max(0.0, min(float(image_height), y1))
-        clipped_x2 = max(0.0, min(float(image_width), x2))
-        clipped_y2 = max(0.0, min(float(image_height), y2))
-        box_width = max(0.0, clipped_x2 - clipped_x1)
-        box_height = max(0.0, clipped_y2 - clipped_y1)
-        image_area = image_width * image_height
-        return (box_width * box_height / image_area) if image_area > 0 else 0.0
+        return ClassThresholds(
+            {
+                "bolt": fallback,
+                "nut": fallback,
+                **(overrides or {}),
+            }
+        )

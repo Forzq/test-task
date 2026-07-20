@@ -1,0 +1,37 @@
+{
+  "baseline_models": {
+    "detector": {
+      "path": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\models\\best.pt",
+      "sha256": "9A9B63893DE71DA40513CB2F354E2396DF7898625D76ED2CFFB17D2BAD43EA3A"
+    },
+    "classifier": {
+      "path": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\models\\classifier_best.pt",
+      "sha256": "96EBF3F8139E0BD420063DD1F420B333118F1A054D049F915666ED7A56993F46"
+    }
+  },
+  "candidate_models": {
+    "detector": {
+      "path": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\models\\candidates\\detector_dataset3_v9.pt",
+      "sha256": "91AA27AEDC03635E042777B1436E581AFEA40CB7877CAE5375FBED90F4814C8C"
+    },
+    "classifier": {
+      "path": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\models\\classifier_best.pt",
+      "sha256": "96EBF3F8139E0BD420063DD1F420B333118F1A054D049F915666ED7A56993F46"
+    }
+  },
+  "deltas": {
+    "macro_f1": 0.05819362108521231,
+    "negative_image_false_positive_rate": -0.3963963963963964,
+    "exact_count_image_accuracy": 0.13461538461538464,
+    "latency_mean_ms": -8.674342307578911,
+    "bolt_recall": 0.031496062992125984,
+    "nut_recall": -0.04851752021563349
+  },
+  "constraints": {
+    "macro_f1": true,
+    "negative_image_fpr": true,
+    "bolt_recall": true,
+    "nut_recall": false
+  },
+  "promotion_recommended": false
+}

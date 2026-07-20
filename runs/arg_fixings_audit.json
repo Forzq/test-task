@@ -1,0 +1,75 @@
+{
+  "dataset": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\arg_fixings_training\\data.yaml",
+  "tiny_area_ratio": 0.001,
+  "splits": {
+    "train": {
+      "images": 467,
+      "box_labels": 17496,
+      "nut_boxes": 8547,
+      "bolt_boxes": 8949,
+      "tiny_nut_boxes": 1591,
+      "tiny_bolt_boxes": 629
+    },
+    "val": {
+      "images": 17,
+      "box_labels": 360,
+      "bolt_boxes": 180,
+      "nut_boxes": 180,
+      "tiny_nut_boxes": 52,
+      "tiny_bolt_boxes": 13
+    },
+    "test": {
+      "images": 19,
+      "box_labels": 384,
+      "bolt_boxes": 189,
+      "nut_boxes": 195,
+      "negative_images": 3,
+      "tiny_nut_boxes": 50,
+      "tiny_bolt_boxes": 20
+    }
+  },
+  "sources": {
+    "test:.": {
+      "images": 19,
+      "bolt_boxes": 189,
+      "nut_boxes": 195,
+      "negative_images": 3
+    },
+    "train:.": {
+      "images": 467,
+      "nut_boxes": 8547,
+      "bolt_boxes": 8949
+    },
+    "val:.": {
+      "images": 17,
+      "bolt_boxes": 180,
+      "nut_boxes": 180
+    }
+  },
+  "train_class_imbalance_ratio": 1.0470340470340471,
+  "box_area_quantiles": {
+    "bolt": {
+      "min": 0.00016113281249999917,
+      "p01": 0.00041748046875,
+      "p05": 0.0008349609374999974,
+      "p50": 0.005233998175136392,
+      "p95": 0.028565388216214998,
+      "max": 0.08202780692704521
+    },
+    "nut": {
+      "min": 9.765625e-05,
+      "p01": 0.000341796875,
+      "p05": 0.000590820312499997,
+      "p50": 0.002141738043654998,
+      "p95": 0.006552734375000001,
+      "max": 0.04524414062499997
+    }
+  },
+  "invalid_images_or_labels": [],
+  "exact_duplicate_groups": 0,
+  "cross_split_duplicate_groups": 0,
+  "cross_split_duplicate_examples": [],
+  "recommendations": [
+    "Review tiny boxes and source-level outliers before using area filters for training metrics."
+  ]
+}

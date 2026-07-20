@@ -1,1008 +1,148 @@
 {
-  "weights": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\models\\best.pt",
+  "weights": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\models\\candidates\\detector_clean_v5.pt",
   "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories",
   "minimum_confidence": 0.2,
   "scanned_candidates": 3000,
-  "selected": 200,
+  "selected": 28,
   "items": [
     {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\ketch\\image_0019.jpg",
-      "confidence": 0.9076358079910278,
+      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\brain\\image_0036.jpg",
+      "confidence": 0.7671730518341064,
       "predicted_class": "bolt"
     },
     {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\electric_guitar\\image_0007.jpg",
-      "confidence": 0.89040207862854,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\barrel\\image_0042.jpg",
-      "confidence": 0.8812171220779419,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\Faces\\image_0018.jpg",
-      "confidence": 0.8762103319168091,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\Faces\\image_0374.jpg",
-      "confidence": 0.8738102316856384,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\camera\\image_0023.jpg",
-      "confidence": 0.8698151111602783,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\Faces\\image_0081.jpg",
-      "confidence": 0.8685482144355774,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\Faces_easy\\image_0018.jpg",
-      "confidence": 0.8448992967605591,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\chair\\image_0056.jpg",
-      "confidence": 0.840058445930481,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\BACKGROUND_Google\\image_0243.jpg",
-      "confidence": 0.8398612141609192,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\Motorbikes\\image_0100.jpg",
-      "confidence": 0.8382425308227539,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\soccer_ball\\image_0052.jpg",
-      "confidence": 0.8323967456817627,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\lotus\\image_0047.jpg",
-      "confidence": 0.8318345546722412,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\Motorbikes\\image_0790.jpg",
-      "confidence": 0.8304276466369629,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\BACKGROUND_Google\\image_0339.jpg",
-      "confidence": 0.8223064541816711,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\laptop\\image_0078.jpg",
-      "confidence": 0.8188895583152771,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\Motorbikes\\image_0258.jpg",
-      "confidence": 0.8153864145278931,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\BACKGROUND_Google\\image_0432.jpg",
-      "confidence": 0.8142969608306885,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\BACKGROUND_Google\\image_0385.jpg",
-      "confidence": 0.8101922869682312,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\BACKGROUND_Google\\image_0250.jpg",
-      "confidence": 0.8092798590660095,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\octopus\\image_0034.jpg",
-      "confidence": 0.8088445663452148,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\barrel\\image_0010.jpg",
-      "confidence": 0.805845320224762,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\BACKGROUND_Google\\image_0217.jpg",
-      "confidence": 0.8033567667007446,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\Motorbikes\\image_0599.jpg",
-      "confidence": 0.8020648956298828,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\crayfish\\image_0026.jpg",
-      "confidence": 0.802049994468689,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\yin_yang\\image_0044.jpg",
-      "confidence": 0.7935681939125061,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\menorah\\image_0008.jpg",
-      "confidence": 0.7935292720794678,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\Motorbikes\\image_0696.jpg",
-      "confidence": 0.7915827035903931,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\stegosaurus\\image_0030.jpg",
-      "confidence": 0.7890844941139221,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\brontosaurus\\image_0022.jpg",
-      "confidence": 0.7876624464988708,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\cellphone\\image_0011.jpg",
-      "confidence": 0.787061870098114,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\ewer\\image_0042.jpg",
-      "confidence": 0.7834752202033997,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\cup\\image_0023.jpg",
-      "confidence": 0.7814478874206543,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\yin_yang\\image_0011.jpg",
-      "confidence": 0.7806496024131775,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\crayfish\\image_0042.jpg",
-      "confidence": 0.7800485491752625,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\yin_yang\\image_0048.jpg",
-      "confidence": 0.7779863476753235,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\yin_yang\\image_0036.jpg",
-      "confidence": 0.7757859230041504,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\BACKGROUND_Google\\image_0295.jpg",
-      "confidence": 0.7756552696228027,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\wheelchair\\image_0059.jpg",
-      "confidence": 0.7721260786056519,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\Motorbikes\\image_0448.jpg",
-      "confidence": 0.7639371752738953,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\Motorbikes\\image_0480.jpg",
-      "confidence": 0.7622630596160889,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\snoopy\\image_0006.jpg",
-      "confidence": 0.7621554732322693,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\BACKGROUND_Google\\image_0210.jpg",
-      "confidence": 0.7616652846336365,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\barrel\\image_0017.jpg",
-      "confidence": 0.7587421536445618,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\Faces\\image_0141.jpg",
-      "confidence": 0.755149245262146,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\menorah\\image_0049.jpg",
-      "confidence": 0.7550443410873413,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\watch\\image_0095.jpg",
-      "confidence": 0.7548654079437256,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\yin_yang\\image_0028.jpg",
-      "confidence": 0.7510966062545776,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\scissors\\image_0010.jpg",
-      "confidence": 0.7465477585792542,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\pigeon\\image_0024.jpg",
-      "confidence": 0.7428833842277527,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\airplanes\\image_0480.jpg",
-      "confidence": 0.7411701083183289,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\camera\\image_0031.jpg",
-      "confidence": 0.7403306365013123,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\brontosaurus\\image_0037.jpg",
-      "confidence": 0.7388244271278381,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\Faces_easy\\image_0061.jpg",
-      "confidence": 0.7380115389823914,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\BACKGROUND_Google\\image_0095.jpg",
-      "confidence": 0.7318241000175476,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\ewer\\image_0019.jpg",
-      "confidence": 0.7309746146202087,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\cup\\image_0047.jpg",
-      "confidence": 0.7301386594772339,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\ceiling_fan\\image_0036.jpg",
-      "confidence": 0.7299212217330933,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\ibis\\image_0024.jpg",
-      "confidence": 0.7290111780166626,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\BACKGROUND_Google\\image_0363.jpg",
-      "confidence": 0.723640501499176,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\schooner\\image_0041.jpg",
-      "confidence": 0.7211028337478638,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\crayfish\\image_0012.jpg",
-      "confidence": 0.7205677628517151,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\brain\\image_0066.jpg",
-      "confidence": 0.7172418832778931,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\Faces\\image_0417.jpg",
-      "confidence": 0.7161402702331543,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\brain\\image_0057.jpg",
-      "confidence": 0.7157986760139465,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\metronome\\image_0029.jpg",
-      "confidence": 0.7142694592475891,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\BACKGROUND_Google\\image_0177.jpg",
-      "confidence": 0.7122853398323059,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\BACKGROUND_Google\\image_0030.jpg",
-      "confidence": 0.7061643600463867,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\cup\\image_0014.jpg",
-      "confidence": 0.7059070467948914,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\stop_sign\\image_0049.jpg",
-      "confidence": 0.7058097720146179,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\umbrella\\image_0051.jpg",
-      "confidence": 0.7032874226570129,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\buddha\\image_0008.jpg",
-      "confidence": 0.7032368183135986,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\chandelier\\image_0011.jpg",
-      "confidence": 0.7014577388763428,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\stop_sign\\image_0059.jpg",
-      "confidence": 0.6981216073036194,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\BACKGROUND_Google\\image_0214.jpg",
-      "confidence": 0.6961338520050049,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\tick\\image_0048.jpg",
-      "confidence": 0.6951699256896973,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\pagoda\\image_0016.jpg",
-      "confidence": 0.6949002742767334,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\cup\\image_0033.jpg",
-      "confidence": 0.6906083226203918,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\Faces\\image_0351.jpg",
-      "confidence": 0.6876771450042725,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\BACKGROUND_Google\\image_0196.jpg",
-      "confidence": 0.6851943731307983,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\BACKGROUND_Google\\image_0007.jpg",
-      "confidence": 0.6848816275596619,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\menorah\\image_0074.jpg",
-      "confidence": 0.6810693144798279,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\octopus\\image_0006.jpg",
-      "confidence": 0.6810150742530823,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\BACKGROUND_Google\\image_0074.jpg",
-      "confidence": 0.6801759600639343,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\ibis\\image_0023.jpg",
-      "confidence": 0.6757975816726685,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\BACKGROUND_Google\\image_0035.jpg",
-      "confidence": 0.6755214929580688,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\yin_yang\\image_0054.jpg",
-      "confidence": 0.6740551590919495,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\metronome\\image_0006.jpg",
-      "confidence": 0.6688061356544495,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\brain\\image_0024.jpg",
-      "confidence": 0.6687767505645752,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\helicopter\\image_0013.jpg",
-      "confidence": 0.6682060956954956,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\cup\\image_0013.jpg",
-      "confidence": 0.6680232286453247,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\ewer\\image_0021.jpg",
-      "confidence": 0.6635985970497131,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\electric_guitar\\image_0039.jpg",
-      "confidence": 0.6629064679145813,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\Motorbikes\\image_0601.jpg",
-      "confidence": 0.6628105044364929,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\binocular\\image_0026.jpg",
-      "confidence": 0.6625628471374512,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\BACKGROUND_Google\\image_0230.jpg",
-      "confidence": 0.6602537035942078,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\stop_sign\\image_0034.jpg",
-      "confidence": 0.6564913988113403,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\windsor_chair\\image_0034.jpg",
-      "confidence": 0.6562873721122742,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\watch\\image_0234.jpg",
-      "confidence": 0.6547597646713257,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\minaret\\image_0059.jpg",
-      "confidence": 0.6514251232147217,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\lobster\\image_0028.jpg",
-      "confidence": 0.6511646509170532,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\yin_yang\\image_0030.jpg",
-      "confidence": 0.6505531072616577,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\windsor_chair\\image_0030.jpg",
-      "confidence": 0.6504655480384827,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\scissors\\image_0028.jpg",
-      "confidence": 0.6471408009529114,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\Motorbikes\\image_0420.jpg",
-      "confidence": 0.646074116230011,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\inline_skate\\image_0026.jpg",
-      "confidence": 0.6455082297325134,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\scissors\\image_0032.jpg",
-      "confidence": 0.6446628570556641,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\camera\\image_0016.jpg",
-      "confidence": 0.6441670060157776,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\watch\\image_0101.jpg",
-      "confidence": 0.644010603427887,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\trilobite\\image_0063.jpg",
-      "confidence": 0.6414568424224854,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\garfield\\image_0023.jpg",
-      "confidence": 0.6410233378410339,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\buddha\\image_0083.jpg",
-      "confidence": 0.6397767663002014,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\ketch\\image_0087.jpg",
-      "confidence": 0.6383872032165527,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\BACKGROUND_Google\\image_0010.jpg",
-      "confidence": 0.6355407238006592,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\Motorbikes\\image_0038.jpg",
-      "confidence": 0.6335986852645874,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\Motorbikes\\image_0463.jpg",
-      "confidence": 0.633085310459137,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\wrench\\image_0005.jpg",
-      "confidence": 0.6330115795135498,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\wrench\\image_0029.jpg",
-      "confidence": 0.6311686038970947,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\sunflower\\image_0018.jpg",
-      "confidence": 0.6255010962486267,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\Motorbikes\\image_0407.jpg",
-      "confidence": 0.6216287016868591,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\cougar_face\\image_0059.jpg",
-      "confidence": 0.6194883584976196,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\cellphone\\image_0015.jpg",
-      "confidence": 0.618018627166748,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\ewer\\image_0051.jpg",
-      "confidence": 0.6154660582542419,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\stop_sign\\image_0028.jpg",
-      "confidence": 0.6152709722518921,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\brain\\image_0014.jpg",
-      "confidence": 0.6151396036148071,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\umbrella\\image_0020.jpg",
-      "confidence": 0.6143618226051331,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\watch\\image_0202.jpg",
-      "confidence": 0.6106785535812378,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\Faces\\image_0197.jpg",
-      "confidence": 0.6096721291542053,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\dragonfly\\image_0032.jpg",
-      "confidence": 0.6087233424186707,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\euphonium\\image_0058.jpg",
-      "confidence": 0.6059445738792419,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\ketch\\image_0035.jpg",
-      "confidence": 0.6056031584739685,
+      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\scissors\\image_0006.jpg",
+      "confidence": 0.7204713225364685,
       "predicted_class": "nut"
     },
     {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\watch\\image_0066.jpg",
-      "confidence": 0.6054678559303284,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\butterfly\\image_0053.jpg",
-      "confidence": 0.6030968427658081,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\Faces\\image_0168.jpg",
-      "confidence": 0.6028308868408203,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\windsor_chair\\image_0006.jpg",
-      "confidence": 0.6010888814926147,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\barrel\\image_0014.jpg",
-      "confidence": 0.6005421280860901,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\menorah\\image_0013.jpg",
-      "confidence": 0.5999894738197327,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\watch\\image_0215.jpg",
-      "confidence": 0.5995166897773743,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\Motorbikes\\image_0473.jpg",
-      "confidence": 0.5985711812973022,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\Faces\\image_0201.jpg",
-      "confidence": 0.5984364151954651,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\Faces\\image_0333.jpg",
-      "confidence": 0.5941373705863953,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\buddha\\image_0040.jpg",
-      "confidence": 0.5928774476051331,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\wheelchair\\image_0042.jpg",
-      "confidence": 0.5919645428657532,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\euphonium\\image_0017.jpg",
-      "confidence": 0.5911609530448914,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\laptop\\image_0008.jpg",
-      "confidence": 0.5909380316734314,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\dalmatian\\image_0025.jpg",
-      "confidence": 0.5899883508682251,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\Motorbikes\\image_0006.jpg",
-      "confidence": 0.5876064300537109,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\octopus\\image_0035.jpg",
-      "confidence": 0.5865105986595154,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\binocular\\image_0008.jpg",
-      "confidence": 0.585679292678833,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\menorah\\image_0021.jpg",
-      "confidence": 0.5852893590927124,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\cup\\image_0055.jpg",
-      "confidence": 0.5838823914527893,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\kangaroo\\image_0073.jpg",
-      "confidence": 0.5826956033706665,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\Faces\\image_0011.jpg",
-      "confidence": 0.5823476910591125,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\metronome\\image_0032.jpg",
-      "confidence": 0.581771194934845,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\soccer_ball\\image_0018.jpg",
-      "confidence": 0.5815092921257019,
+      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\Faces\\image_0270.jpg",
+      "confidence": 0.7175883650779724,
       "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\Motorbikes\\image_0628.jpg",
-      "confidence": 0.5813477635383606,
-      "predicted_class": "nut"
     },
     {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\trilobite\\image_0068.jpg",
-      "confidence": 0.5771447420120239,
+      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\gramophone\\image_0048.jpg",
+      "confidence": 0.6723961234092712,
       "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\nautilus\\image_0031.jpg",
-      "confidence": 0.5771207213401794,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\menorah\\image_0010.jpg",
-      "confidence": 0.5769135355949402,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\Motorbikes\\image_0416.jpg",
-      "confidence": 0.5753618478775024,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\ketch\\image_0104.jpg",
-      "confidence": 0.5705955624580383,
-      "predicted_class": "nut"
     },
     {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\yin_yang\\image_0017.jpg",
-      "confidence": 0.5702289938926697,
+      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\umbrella\\image_0050.jpg",
+      "confidence": 0.6418450474739075,
       "predicted_class": "bolt"
     },
     {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\BACKGROUND_Google\\image_0357.jpg",
-      "confidence": 0.5694776773452759,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\crayfish\\image_0065.jpg",
-      "confidence": 0.5657305717468262,
+      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\Faces\\image_0042.jpg",
+      "confidence": 0.641125500202179,
       "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\BACKGROUND_Google\\image_0325.jpg",
-      "confidence": 0.5651922821998596,
-      "predicted_class": "nut"
     },
     {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\Faces\\image_0410.jpg",
-      "confidence": 0.5651229619979858,
+      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\lotus\\image_0050.jpg",
+      "confidence": 0.5691940188407898,
       "predicted_class": "bolt"
     },
     {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\helicopter\\image_0038.jpg",
-      "confidence": 0.5642856359481812,
+      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\brontosaurus\\image_0008.jpg",
+      "confidence": 0.4809217154979706,
       "predicted_class": "bolt"
     },
     {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\stapler\\image_0042.jpg",
-      "confidence": 0.5638810396194458,
+      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\pagoda\\image_0038.jpg",
+      "confidence": 0.4762137532234192,
       "predicted_class": "bolt"
     },
     {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\Faces\\image_0212.jpg",
-      "confidence": 0.561518669128418,
+      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\cougar_body\\image_0009.jpg",
+      "confidence": 0.4720642864704132,
       "predicted_class": "bolt"
     },
     {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\stapler\\image_0017.jpg",
-      "confidence": 0.5603963136672974,
+      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\crab\\image_0021.jpg",
+      "confidence": 0.47086670994758606,
       "predicted_class": "bolt"
     },
     {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\chandelier\\image_0049.jpg",
-      "confidence": 0.557823896408081,
+      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\BACKGROUND_Google\\image_0039.jpg",
+      "confidence": 0.45132699608802795,
       "predicted_class": "bolt"
     },
     {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\nautilus\\image_0041.jpg",
-      "confidence": 0.5527505278587341,
+      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\BACKGROUND_Google\\image_0062.jpg",
+      "confidence": 0.42619237303733826,
       "predicted_class": "nut"
     },
     {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\Faces\\image_0134.jpg",
-      "confidence": 0.5513050556182861,
+      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\BACKGROUND_Google\\image_0232.jpg",
+      "confidence": 0.36563625931739807,
       "predicted_class": "bolt"
     },
     {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\brain\\image_0059.jpg",
-      "confidence": 0.549018383026123,
+      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\panda\\image_0008.jpg",
+      "confidence": 0.3559136986732483,
       "predicted_class": "bolt"
     },
     {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\wheelchair\\image_0011.jpg",
-      "confidence": 0.5489681959152222,
+      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\brain\\image_0093.jpg",
+      "confidence": 0.34857964515686035,
       "predicted_class": "bolt"
     },
     {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\cellphone\\image_0028.jpg",
-      "confidence": 0.5489351153373718,
+      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\BACKGROUND_Google\\image_0378.jpg",
+      "confidence": 0.32922056317329407,
       "predicted_class": "bolt"
     },
     {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\cellphone\\image_0008.jpg",
-      "confidence": 0.5467725396156311,
+      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\brain\\image_0033.jpg",
+      "confidence": 0.3253495991230011,
       "predicted_class": "bolt"
     },
     {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\octopus\\image_0018.jpg",
-      "confidence": 0.5451332926750183,
+      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\accordion\\image_0032.jpg",
+      "confidence": 0.30762210488319397,
       "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\scissors\\image_0026.jpg",
-      "confidence": 0.5419567227363586,
-      "predicted_class": "nut"
     },
     {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\scorpion\\image_0042.jpg",
-      "confidence": 0.5415898561477661,
+      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\platypus\\image_0025.jpg",
+      "confidence": 0.306363970041275,
       "predicted_class": "bolt"
     },
     {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\airplanes\\image_0691.jpg",
-      "confidence": 0.5374252200126648,
+      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\ibis\\image_0017.jpg",
+      "confidence": 0.26730337738990784,
       "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\Faces\\image_0264.jpg",
-      "confidence": 0.5371164083480835,
-      "predicted_class": "nut"
     },
     {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\airplanes\\image_0448.jpg",
-      "confidence": 0.53293776512146,
-      "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\soccer_ball\\image_0054.jpg",
-      "confidence": 0.532210648059845,
+      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\accordion\\image_0046.jpg",
+      "confidence": 0.2600767910480499,
       "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\soccer_ball\\image_0056.jpg",
-      "confidence": 0.528815746307373,
-      "predicted_class": "nut"
     },
     {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\BACKGROUND_Google\\image_0059.jpg",
-      "confidence": 0.5283508896827698,
+      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\hedgehog\\image_0048.jpg",
+      "confidence": 0.25072401762008667,
       "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\ketch\\image_0030.jpg",
-      "confidence": 0.5260543823242188,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\grand_piano\\image_0072.jpg",
-      "confidence": 0.5225212574005127,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\pagoda\\image_0006.jpg",
-      "confidence": 0.5219704508781433,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\BACKGROUND_Google\\image_0445.jpg",
-      "confidence": 0.520508348941803,
-      "predicted_class": "bolt"
     },
     {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\scissors\\image_0029.jpg",
-      "confidence": 0.5181134343147278,
+      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\BACKGROUND_Google\\image_0088.jpg",
+      "confidence": 0.23429524898529053,
       "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\yin_yang\\image_0006.jpg",
-      "confidence": 0.5148109793663025,
-      "predicted_class": "nut"
     },
     {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\stop_sign\\image_0045.jpg",
-      "confidence": 0.5110453367233276,
+      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\pagoda\\image_0008.jpg",
+      "confidence": 0.2307649850845337,
       "predicted_class": "nut"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\brontosaurus\\image_0025.jpg",
-      "confidence": 0.5107866525650024,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\rooster\\image_0028.jpg",
-      "confidence": 0.510438859462738,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\wrench\\image_0007.jpg",
-      "confidence": 0.5097898840904236,
-      "predicted_class": "bolt"
-    },
-    {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\tick\\image_0037.jpg",
-      "confidence": 0.508368968963623,
-      "predicted_class": "bolt"
     },
     {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\ceiling_fan\\image_0008.jpg",
-      "confidence": 0.5066235661506653,
+      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\scorpion\\image_0033.jpg",
+      "confidence": 0.22901423275470734,
       "predicted_class": "bolt"
     },
     {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\stop_sign\\image_0053.jpg",
-      "confidence": 0.5056655406951904,
+      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\accordion\\image_0013.jpg",
+      "confidence": 0.2249346822500229,
       "predicted_class": "bolt"
     },
     {
-      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\stop_sign\\image_0063.jpg",
-      "confidence": 0.5036513209342957,
+      "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\raw_negatives\\caltech-101\\101_ObjectCategories\\Faces\\image_0390.jpg",
+      "confidence": 0.20152708888053894,
       "predicted_class": "nut"
     }
   ]

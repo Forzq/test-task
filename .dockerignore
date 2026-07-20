@@ -3,7 +3,12 @@
 venv
 __pycache__
 .pytest_cache
+.pytest*
 .ruff_cache
+htmlcov
+.coverage
+.agents
+.codex
 data
 models
 runs

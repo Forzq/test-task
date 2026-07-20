@@ -6,6 +6,7 @@ venv/
 
 # Test and lint caches
 .pytest_cache/
+.pytest*/
 .ruff_cache/
 .coverage
 htmlcov/
@@ -17,10 +18,17 @@ data/**
 !data/**/*.yaml
 !data/**/*.json
 !data/README*.txt
+!data/external_benchmark/review.csv
+!data/external_benchmark_v2/review.csv
+!data/arg_fixings_training/review.csv
+!data/roboflow_additions/review.csv
 
 # Small curated cases are part of the application regression suite.
 !data/regression/**
 !data/manual_hard_negatives/**
+
+# Public benchmark archives and extracted payloads are reproducibly downloaded.
+data/external_benchmark_sources/**
 
 # Base checkpoints are downloaded automatically by Ultralytics during training.
 # Trained models/best.pt and models/classifier_best.pt are tracked for submission.
@@ -28,6 +36,10 @@ yolov8n.pt
 yolov8s.pt
 yolov8n-cls.pt
 yolo26n.pt
+
+# Experimental checkpoints are reproducible training outputs. Keep their
+# metrics and provenance, but ship only the two deployed weights above.
+models/candidates/*.pt
 
 # Keep metrics and exact run settings, but omit generated plots and checkpoints.
 runs/**
@@ -38,7 +50,14 @@ runs/**
 !runs/**/*.json
 
 # IDE and operating system files
+.agents/
+.codex/
 .idea/
 .vscode/
 .DS_Store
 Thumbs.db
+
+# Local configuration may contain private API keys.
+.env
+.env.*
+!.env.example

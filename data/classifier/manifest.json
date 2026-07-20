@@ -1,12 +1,15 @@
 {
   "data": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\combined.yaml",
-  "detector_weights": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\models\\best.pt",
+  "detector_weights": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\models\\candidates\\detector_clean_v5.pt",
   "configuration": {
     "data": "data\\combined.yaml",
-    "weights": "models\\best.pt",
+    "weights": "models\\candidates\\detector_clean_v5.pt",
     "output": "data\\classifier",
     "image_size": 224,
-    "context_ratio": 0.2,
+    "context_ratios": [
+      0.2,
+      1.0
+    ],
     "random_crops_per_negative": 4,
     "proposals_per_negative": 5,
     "proposal_confidence": 0.01,
@@ -20,42 +23,47 @@
   },
   "available": {
     "train": {
-      "bolt_instances": 11425,
-      "nut_instances": 3809,
-      "negative_images": 860
+      "bolt_instances": 15650,
+      "nut_instances": 6894,
+      "negative_images": 707
     },
     "val": {
-      "bolt_instances": 1223,
-      "nut_instances": 374,
-      "negative_images": 109
+      "bolt_instances": 1676,
+      "nut_instances": 1188,
+      "negative_images": 113
     },
     "test": {
-      "bolt_instances": 1333,
-      "nut_instances": 437,
-      "negative_images": 48
+      "bolt_instances": 1852,
+      "nut_instances": 1416,
+      "negative_images": 57
     }
   },
   "selected_by_split_and_class": {
     "train": {
-      "bolt": 3809,
-      "nut": 3809,
-      "other": 3809
+      "bolt": 4000,
+      "nut": 4000,
+      "other": 4000
     },
     "val": {
-      "bolt": 374,
-      "nut": 374,
-      "other": 374
+      "bolt": 1000,
+      "nut": 1000,
+      "other": 1000
     },
     "test": {
-      "bolt": 287,
-      "nut": 287,
-      "other": 287
+      "bolt": 573,
+      "nut": 573,
+      "other": 573
     }
   },
   "selected_by_origin": {
-    "annotation": 8940,
-    "detector_proposal": 567,
-    "full_negative": 784,
-    "random_negative": 3119
+    "annotation": 11146,
+    "detector_proposal": 558,
+    "full_negative": 547,
+    "random_negative": 4468
+  },
+  "selected_by_context": {
+    "0.0": 547,
+    "0.2": 8070,
+    "1.0": 8102
   }
 }

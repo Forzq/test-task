@@ -1,0 +1,203 @@
+{
+  "description": "Strict bolt/nut conversion of three public Roboflow sources.",
+  "target_classes": [
+    "bolt",
+    "nut"
+  ],
+  "ignored_classes": "Retained images, omitted boxes; treated as background.",
+  "deduplication": "SHA-256 against current training data, frozen benchmark, and new sources; Roboflow filename-family cap prevents offline-augmentation multiplication.",
+  "max_variants_per_family": 1,
+  "splits": {
+    "train": {
+      "images": 2727,
+      "bolt_boxes": 8263,
+      "nut_boxes": 12069,
+      "negative_images": 1505,
+      "ignored_boxes": 4055
+    },
+    "valid": {
+      "images": 502,
+      "bolt_boxes": 1145,
+      "nut_boxes": 1521,
+      "negative_images": 311,
+      "ignored_boxes": 754
+    },
+    "test": {
+      "images": 335,
+      "bolt_boxes": 896,
+      "nut_boxes": 1380,
+      "negative_images": 195,
+      "ignored_boxes": 460
+    }
+  },
+  "sources": [
+    {
+      "key": "fastener_object_detection",
+      "title": "Fastener Object Detection",
+      "url": "https://universe.roboflow.com/automated-disassembly/fastener-object-detection/dataset/1",
+      "workspace": "automated-disassembly",
+      "project": "fastener-object-detection",
+      "version": 1,
+      "license": "CC BY 4.0",
+      "class_mapping": {
+        "hexbolt": "bolt",
+        "hexnut": "nut"
+      },
+      "missing_declared_target_aliases": [
+        "hexnut"
+      ],
+      "source_classes": {
+        "0": "combo-screw",
+        "1": "flat-screw",
+        "2": "hex-bolt",
+        "3": "hex-screw",
+        "4": "phillips-screw",
+        "5": "square-screw",
+        "6": "undefined"
+      },
+      "source_boxes": {
+        "phillips-screw": 27,
+        "undefined": 540,
+        "combo-screw": 2,
+        "flat-screw": 8,
+        "hex-screw": 18,
+        "hex-bolt": 9,
+        "square-screw": 3
+      },
+      "splits": {
+        "train": {
+          "images": 723,
+          "bolt_boxes": 6,
+          "nut_boxes": 0,
+          "negative_images": 719,
+          "ignored_boxes": 496
+        },
+        "valid": {
+          "images": 133,
+          "bolt_boxes": 1,
+          "nut_boxes": 0,
+          "negative_images": 132,
+          "ignored_boxes": 62
+        },
+        "test": {
+          "images": 89,
+          "bolt_boxes": 2,
+          "nut_boxes": 0,
+          "negative_images": 88,
+          "ignored_boxes": 40
+        }
+      },
+      "removed": {
+        "offline_variants": 937,
+        "existing_training_data": 19
+      },
+      "missing_label_files_treated_as_negative": 0,
+      "archive_sha256": "7da90044c03814654c77caecc225d9f2882400845e9dcf0b28e3caa2f2118e81"
+    },
+    {
+      "key": "screw_nut_bolt",
+      "title": "screw-nut-bolt",
+      "url": "https://universe.roboflow.com/logesh-s-workspace/screw-nut-bolt/dataset/1",
+      "workspace": "logesh-s-workspace",
+      "project": "screw-nut-bolt",
+      "version": 1,
+      "license": "CC BY 4.0",
+      "class_mapping": {
+        "bolt": "bolt",
+        "nut": "nut"
+      },
+      "missing_declared_target_aliases": [],
+      "source_classes": {
+        "0": "bolt",
+        "1": "nut",
+        "2": "screw"
+      },
+      "source_boxes": {
+        "bolt": 9819,
+        "nut": 14372,
+        "screw": 3074
+      },
+      "splits": {
+        "train": {
+          "images": 1055,
+          "bolt_boxes": 7868,
+          "nut_boxes": 11624,
+          "negative_images": 249,
+          "ignored_boxes": 2532
+        },
+        "valid": {
+          "images": 126,
+          "bolt_boxes": 1078,
+          "nut_boxes": 1417,
+          "negative_images": 23,
+          "ignored_boxes": 244
+        },
+        "test": {
+          "images": 119,
+          "bolt_boxes": 873,
+          "nut_boxes": 1331,
+          "negative_images": 28,
+          "ignored_boxes": 298
+        }
+      },
+      "removed": {},
+      "missing_label_files_treated_as_negative": 0,
+      "archive_sha256": "82a9880af25662569c369bf665fba31ac73912fc7e31eadfc2fd02c5ba057227"
+    },
+    {
+      "key": "stresstest_tool_tray",
+      "title": "Stresstest @Troll - Needle, nut, bolt and scissor",
+      "url": "https://universe.roboflow.com/tool-tray-yolo-training-dataset/stresstest-troll-needle-nut-bolt-and-scissor",
+      "workspace": "tool-tray-yolo-training-dataset",
+      "project": "stresstest-troll-needle-nut-bolt-and-scissor",
+      "version": 3,
+      "license": "CC BY 4.0",
+      "class_mapping": {
+        "bolt": "bolt",
+        "nut": "nut"
+      },
+      "missing_declared_target_aliases": [],
+      "source_classes": {
+        "0": "Needles",
+        "1": "bolt",
+        "2": "nut",
+        "3": "scissor"
+      },
+      "source_boxes": {
+        "nut": 598,
+        "bolt": 476,
+        "scissor": 794,
+        "Needles": 803
+      },
+      "splits": {
+        "train": {
+          "images": 949,
+          "bolt_boxes": 389,
+          "nut_boxes": 445,
+          "negative_images": 537,
+          "ignored_boxes": 1027
+        },
+        "valid": {
+          "images": 243,
+          "bolt_boxes": 66,
+          "nut_boxes": 104,
+          "negative_images": 156,
+          "ignored_boxes": 448
+        },
+        "test": {
+          "images": 127,
+          "bolt_boxes": 21,
+          "nut_boxes": 49,
+          "negative_images": 79,
+          "ignored_boxes": 122
+        }
+      },
+      "removed": {
+        "offline_variants": 2377
+      },
+      "missing_label_files_treated_as_negative": 0,
+      "archive_sha256": "401434d3de2cc265fc0adf1fb54bcd05f01d0f156b639f589439c5937eb6b1d2"
+    }
+  ],
+  "review_worksheet": "review.csv"
+}

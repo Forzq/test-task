@@ -138,26 +138,28 @@ def _predict(arguments: argparse.Namespace, paths: list[Path]) -> list[Predictio
     class_names = {str(value).lower() for value in model.names.values()}
     if class_names != {"bolt", "nut", "other"}:
         raise ValueError(f"Unexpected classifier classes: {sorted(class_names)}")
-    results = model.predict(
-        source=[str(path) for path in paths],
-        imgsz=arguments.imgsz,
-        batch=arguments.batch,
-        device=arguments.device,
-        stream=False,
-        verbose=False,
-    )
     records: list[PredictionRecord] = []
-    for path, result in zip(paths, results, strict=True):
-        if result.probs is None:
-            raise ValueError(f"Classifier returned no probabilities for {path}")
-        class_id = int(result.probs.top1)
-        records.append(
-            PredictionRecord(
-                true_class=path.parent.name.lower(),
-                predicted_class=str(result.names[class_id]).lower(),
-                confidence=float(result.probs.top1conf.item()),
-            )
+    for start in range(0, len(paths), arguments.batch):
+        batch_paths = paths[start : start + arguments.batch]
+        results = model.predict(
+            source=[str(path) for path in batch_paths],
+            imgsz=arguments.imgsz,
+            batch=len(batch_paths),
+            device=arguments.device,
+            stream=False,
+            verbose=False,
         )
+        for path, result in zip(batch_paths, results, strict=True):
+            if result.probs is None:
+                raise ValueError(f"Classifier returned no probabilities for {path}")
+            class_id = int(result.probs.top1)
+            records.append(
+                PredictionRecord(
+                    true_class=path.parent.name.lower(),
+                    predicted_class=str(result.names[class_id]).lower(),
+                    confidence=float(result.probs.top1conf.item()),
+                )
+            )
     return records
 
 

@@ -1,0 +1,149 @@
+{
+  "dataset": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\combined.yaml",
+  "tiny_area_ratio": 0.001,
+  "splits": {
+    "train": {
+      "images": 3115,
+      "box_labels": 11274,
+      "bolt_boxes": 7825,
+      "nut_boxes": 3447,
+      "negative_images": 879,
+      "tiny_bolt_boxes": 1261,
+      "tiny_nut_boxes": 180
+    },
+    "val": {
+      "images": 405,
+      "box_labels": 1433,
+      "nut_boxes": 594,
+      "bolt_boxes": 838,
+      "negative_images": 113,
+      "tiny_bolt_boxes": 73,
+      "tiny_nut_boxes": 52
+    },
+    "test": {
+      "images": 396,
+      "box_labels": 1634,
+      "bolt_boxes": 926,
+      "nut_boxes": 708,
+      "negative_images": 57,
+      "tiny_bolt_boxes": 83,
+      "tiny_nut_boxes": 50
+    }
+  },
+  "sources": {
+    "test:.": {
+      "images": 82,
+      "bolt_boxes": 235,
+      "nut_boxes": 226
+    },
+    "test:arg_fixings_training": {
+      "images": 19,
+      "bolt_boxes": 189,
+      "nut_boxes": 195,
+      "negative_images": 3
+    },
+    "test:dataset2": {
+      "images": 180,
+      "bolt_boxes": 336,
+      "nut_boxes": 85,
+      "negative_images": 3
+    },
+    "test:external_positives": {
+      "images": 70,
+      "bolt_boxes": 166,
+      "nut_boxes": 202,
+      "negative_images": 6
+    },
+    "test:negatives": {
+      "images": 45,
+      "negative_images": 45
+    },
+    "train:.": {
+      "images": 396,
+      "bolt_boxes": 1062,
+      "nut_boxes": 746
+    },
+    "train:arg_fixings_training": {
+      "images": 67,
+      "nut_boxes": 1093,
+      "bolt_boxes": 1305
+    },
+    "train:dataset2": {
+      "images": 1439,
+      "negative_images": 141,
+      "bolt_boxes": 2668,
+      "nut_boxes": 626
+    },
+    "train:external_positives": {
+      "images": 494,
+      "bolt_boxes": 2790,
+      "nut_boxes": 982,
+      "negative_images": 19
+    },
+    "train:hard_negatives": {
+      "images": 200,
+      "negative_images": 200
+    },
+    "train:manual_hard_negatives": {
+      "images": 1,
+      "negative_images": 1
+    },
+    "train:negatives": {
+      "images": 518,
+      "negative_images": 518
+    },
+    "val:.": {
+      "images": 72,
+      "nut_boxes": 172,
+      "bolt_boxes": 178
+    },
+    "val:arg_fixings_training": {
+      "images": 17,
+      "bolt_boxes": 180,
+      "nut_boxes": 180
+    },
+    "val:dataset2": {
+      "images": 181,
+      "bolt_boxes": 254,
+      "nut_boxes": 48,
+      "negative_images": 44
+    },
+    "val:external_positives": {
+      "images": 70,
+      "bolt_boxes": 226,
+      "nut_boxes": 194,
+      "negative_images": 4
+    },
+    "val:negatives": {
+      "images": 65,
+      "negative_images": 65
+    }
+  },
+  "train_class_imbalance_ratio": 2.2700899332753117,
+  "box_area_quantiles": {
+    "bolt": {
+      "min": 9.113402800000135e-05,
+      "p01": 0.00018326628100000003,
+      "p05": 0.00037616967600000156,
+      "p50": 0.0087890625,
+      "p95": 0.057722820838994104,
+      "max": 1.0
+    },
+    "nut": {
+      "min": 0.00018310546874999827,
+      "p01": 0.0005126953125,
+      "p05": 0.00091552734375,
+      "p50": 0.004570312499999999,
+      "p95": 0.020058593749999992,
+      "max": 1.0
+    }
+  },
+  "invalid_images_or_labels": [],
+  "exact_duplicate_groups": 3,
+  "cross_split_duplicate_groups": 0,
+  "cross_split_duplicate_examples": [],
+  "recommendations": [
+    "Increase nut diversity or use class-aware sampling; detector boxes are imbalanced.",
+    "Review tiny boxes and source-level outliers before using area filters for training metrics."
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "train": {
+    "fastener_object_detection": {
+      "bolt_only": 0,
+      "nut_only": 0,
+      "mixed": 0,
+      "negative": 200
+    },
+    "screw_nut_bolt": {
+      "bolt_only": 0,
+      "nut_only": 0,
+      "mixed": 0,
+      "negative": 100
+    },
+    "stresstest_tool_tray": {
+      "bolt_only": 0,
+      "nut_only": 0,
+      "mixed": 0,
+      "negative": 200
+    }
+  },
+  "valid": {
+    "fastener_object_detection": {
+      "bolt_only": 0,
+      "nut_only": 0,
+      "mixed": 0,
+      "negative": 40
+    },
+    "screw_nut_bolt": {
+      "bolt_only": 0,
+      "nut_only": 0,
+      "mixed": 0,
+      "negative": 20
+    },
+    "stresstest_tool_tray": {
+      "bolt_only": 0,
+      "nut_only": 0,
+      "mixed": 0,
+      "negative": 50
+    }
+  },
+  "test": {
+    "fastener_object_detection": {
+      "bolt_only": 0,
+      "nut_only": 0,
+      "mixed": 0,
+      "negative": 40
+    },
+    "screw_nut_bolt": {
+      "bolt_only": 0,
+      "nut_only": 0,
+      "mixed": 0,
+      "negative": 20
+    },
+    "stresstest_tool_tray": {
+      "bolt_only": 0,
+      "nut_only": 0,
+      "mixed": 0,
+      "negative": 40
+    }
+  }
+}

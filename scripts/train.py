@@ -6,6 +6,11 @@ import argparse
 from dataclasses import dataclass
 from pathlib import Path
 
+import yaml
+
+
+EXTERNAL_BENCHMARK_ROOT = Path("data/external_benchmark").resolve()
+
 
 @dataclass(frozen=True, slots=True)
 class TrainingConfig:
@@ -44,6 +49,14 @@ class TrainingConfig:
         Number of epochs without validation improvement before early stopping.
     save_period : int
         Interval in epochs for retaining periodic checkpoints.
+    optimizer : str
+        Optimizer name passed to Ultralytics.
+    learning_rate : float
+        Initial fine-tuning learning rate.
+    warmup_epochs : float
+        Number of learning-rate warmup epochs.
+    cosine_learning_rate : bool
+        Whether cosine learning-rate decay is enabled.
     """
 
     data: Path
@@ -61,6 +74,10 @@ class TrainingConfig:
     hsv_v: float
     patience: int
     save_period: int
+    optimizer: str
+    learning_rate: float
+    warmup_epochs: float
+    cosine_learning_rate: bool
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -124,6 +141,14 @@ def build_parser() -> argparse.ArgumentParser:
         default=5,
         help="Save a checkpoint every N epochs for post-training selection (default: 5).",
     )
+    parser.add_argument(
+        "--optimizer",
+        choices=("auto", "SGD", "Adam", "AdamW", "NAdam", "RAdam", "RMSProp"),
+        default="auto",
+    )
+    parser.add_argument("--lr0", type=float, default=0.01)
+    parser.add_argument("--warmup-epochs", type=float, default=3.0)
+    parser.add_argument("--cos-lr", action="store_true")
     return parser
 
 
@@ -158,6 +183,10 @@ def parse_config() -> TrainingConfig:
         hsv_v=arguments.hsv_v,
         patience=arguments.patience,
         save_period=arguments.save_period,
+        optimizer=arguments.optimizer,
+        learning_rate=arguments.lr0,
+        warmup_epochs=arguments.warmup_epochs,
+        cosine_learning_rate=arguments.cos_lr,
     )
     _validate_config(config)
     return config
@@ -179,6 +208,7 @@ def _validate_config(config: TrainingConfig) -> None:
     """
     if not config.data.is_file():
         raise ValueError(f"Dataset YAML was not found: {config.data}")
+    _reject_external_benchmark(config.data)
     if config.epochs <= 0:
         raise ValueError("epochs must be positive")
     if config.image_size <= 0:
@@ -191,6 +221,10 @@ def _validate_config(config: TrainingConfig) -> None:
         raise ValueError("patience cannot be negative")
     if config.save_period <= 0:
         raise ValueError("save-period must be positive")
+    if config.learning_rate <= 0.0:
+        raise ValueError("lr0 must be positive")
+    if config.warmup_epochs < 0.0:
+        raise ValueError("warmup-epochs cannot be negative")
     for name, value in (
         ("hsv_h", config.hsv_h),
         ("hsv_s", config.hsv_s),
@@ -198,6 +232,49 @@ def _validate_config(config: TrainingConfig) -> None:
     ):
         if not 0.0 <= value <= 1.0:
             raise ValueError(f"{name} must be between 0 and 1")
+
+
+def _reject_external_benchmark(data_path: Path) -> None:
+    """
+    Prevent the frozen external benchmark from being used for fine-tuning.
+
+    Parameters
+    ----------
+    data_path : Path
+        YOLO dataset configuration selected for training.
+
+    Raises
+    ------
+    ValueError
+        Raised when the YAML or any declared split points into the benchmark.
+    """
+    resolved_data = data_path.resolve()
+    if (
+        resolved_data == EXTERNAL_BENCHMARK_ROOT
+        or EXTERNAL_BENCHMARK_ROOT in resolved_data.parents
+    ):
+        raise ValueError("The external benchmark is evaluation-only and cannot be trained on")
+    document = yaml.safe_load(data_path.read_text(encoding="utf-8")) or {}
+    dataset_root = data_path.parent.resolve()
+    if document.get("path"):
+        declared_root = Path(str(document["path"]))
+        dataset_root = (
+            declared_root.resolve()
+            if declared_root.is_absolute()
+            else (dataset_root / declared_root).resolve()
+        )
+    for split in ("train", "val", "valid", "test"):
+        declared = document.get(split)
+        values = declared if isinstance(declared, list) else [declared]
+        for value in values:
+            if value is None:
+                continue
+            path = Path(str(value))
+            resolved = path.resolve() if path.is_absolute() else (dataset_root / path).resolve()
+            if resolved == EXTERNAL_BENCHMARK_ROOT or EXTERNAL_BENCHMARK_ROOT in resolved.parents:
+                raise ValueError(
+                    "The external benchmark is evaluation-only and cannot be trained on"
+                )
 
 
 def train(config: TrainingConfig) -> Path:
@@ -238,6 +315,10 @@ def train(config: TrainingConfig) -> Path:
         hsv_v=config.hsv_v,
         patience=config.patience,
         save_period=config.save_period,
+        optimizer=config.optimizer,
+        lr0=config.learning_rate,
+        warmup_epochs=config.warmup_epochs,
+        cos_lr=config.cosine_learning_rate,
         pretrained=True,
     )
     best_weights = Path(model.trainer.best)

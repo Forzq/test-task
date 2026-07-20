@@ -1,0 +1,30 @@
+{
+  "name": "dataset3_hybrid_v1",
+  "deployed_at": "2026-07-20",
+  "detector": {
+    "path": "models/best.pt",
+    "source": "models/candidates/detector_dataset3_v9.pt",
+    "sha256": "91AA27AEDC03635E042777B1436E581AFEA40CB7877CAE5375FBED90F4814C8C",
+    "bolt_threshold": 0.43,
+    "nut_threshold": 0.56
+  },
+  "classifier": {
+    "path": "models/classifier_best.pt",
+    "sha256": "96EBF3F8139E0BD420063DD1F420B333118F1A054D049F915666ED7A56993F46",
+    "bolt_threshold": 0.39,
+    "nut_threshold": 0.51,
+    "image_size": 224,
+    "crop_contexts": [0.2]
+  },
+  "postprocessing": {
+    "min_box_area_ratio": 0.001,
+    "final_nms_iou_threshold": 0.45
+  },
+  "rollback": {
+    "git_commit": "ffbcc10",
+    "reference": "models/baseline.json",
+    "note": "Candidate and rollback .pt files are excluded from the compact submission."
+  },
+  "regression_report": "runs/benchmarks/external_v2_dataset3_v9.json",
+  "decision": "Explicitly promoted hybrid despite a 0.0485 nut-recall regression because macro F1, background FPR, and exact-count accuracy improved."
+}

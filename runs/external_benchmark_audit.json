@@ -1,0 +1,50 @@
+{
+  "dataset": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\external_benchmark\\benchmark.yaml",
+  "tiny_area_ratio": 0.001,
+  "splits": {
+    "train": {},
+    "val": {},
+    "test": {
+      "images": 225,
+      "box_labels": 575,
+      "bolt_boxes": 326,
+      "nut_boxes": 249,
+      "negative_images": 120,
+      "tiny_bolt_boxes": 2
+    }
+  },
+  "sources": {
+    "test:C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data": {
+      "images": 225,
+      "bolt_boxes": 326,
+      "nut_boxes": 249,
+      "negative_images": 120
+    }
+  },
+  "train_class_imbalance_ratio": null,
+  "box_area_quantiles": {
+    "bolt": {
+      "min": 0.00069580078125,
+      "p01": 0.0013586425781249992,
+      "p05": 0.005665283203125,
+      "p50": 0.03834960937500001,
+      "p95": 0.2691650390625,
+      "max": 0.95326171875
+    },
+    "nut": {
+      "min": 0.0017773437499999962,
+      "p01": 0.0028198242187499993,
+      "p05": 0.007041015624999993,
+      "p50": 0.030301513671875006,
+      "p95": 0.21237548828125,
+      "max": 0.74023681640625
+    }
+  },
+  "invalid_images_or_labels": [],
+  "exact_duplicate_groups": 0,
+  "cross_split_duplicate_groups": 0,
+  "cross_split_duplicate_examples": [],
+  "recommendations": [
+    "Review tiny boxes and source-level outliers before using area filters for training metrics."
+  ]
+}

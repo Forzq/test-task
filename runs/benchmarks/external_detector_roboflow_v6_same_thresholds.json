@@ -1,0 +1,57 @@
+{
+  "dataset": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\external_benchmark\\benchmark.yaml",
+  "split": "test",
+  "images": 225,
+  "models": {
+    "detector": {
+      "path": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\models\\candidates\\detector_roboflow_v6.pt",
+      "sha256": "E4FBA63BD824F5B8252F51737A75961DB6D1B40C9A946BDE0BBF271625F7E783"
+    },
+    "classifier": {
+      "path": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\models\\classifier_best.pt",
+      "sha256": "96EBF3F8139E0BD420063DD1F420B333118F1A054D049F915666ED7A56993F46"
+    }
+  },
+  "configuration": {
+    "bolt_detector_threshold": 0.45,
+    "nut_detector_threshold": 0.45,
+    "bolt_classifier_threshold": 0.54,
+    "nut_classifier_threshold": 0.54,
+    "contexts": [
+      0.2
+    ],
+    "min_box_area_ratio": 0.001,
+    "nms_iou": 0.45,
+    "match_iou": 0.5,
+    "classifier_enabled": true
+  },
+  "classes": {
+    "bolt": {
+      "tp": 65,
+      "fp": 16,
+      "fn": 261,
+      "precision": 0.8024691358024691,
+      "recall": 0.19938650306748465,
+      "f1": 0.3194103194103194
+    },
+    "nut": {
+      "tp": 110,
+      "fp": 9,
+      "fn": 139,
+      "precision": 0.9243697478991597,
+      "recall": 0.44176706827309237,
+      "f1": 0.5978260869565217
+    }
+  },
+  "macro_f1": 0.45861820318342056,
+  "negative_images": 120,
+  "negative_images_with_false_positive": 5,
+  "negative_image_false_positive_rate": 0.041666666666666664,
+  "images_with_any_false_positive": 11,
+  "exact_count_image_accuracy": 0.6044444444444445,
+  "latency_ms": {
+    "mean": 26.23460711101264,
+    "p50": 17.93779999934486,
+    "p95": 47.9765000018233
+  }
+}

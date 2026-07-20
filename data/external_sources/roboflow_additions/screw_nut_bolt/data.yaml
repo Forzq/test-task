@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 3
+names: ['bolt', 'nut', 'screw']
+
+roboflow:
+  workspace: logesh-s-workspace
+  project: screw-nut-bolt
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/logesh-s-workspace/screw-nut-bolt/dataset/1

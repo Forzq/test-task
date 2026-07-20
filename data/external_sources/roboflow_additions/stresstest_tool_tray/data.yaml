@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 4
+names: ['Needles', 'bolt', 'nut', 'scissor']
+
+roboflow:
+  workspace: tool-tray-yolo-training-dataset
+  project: stresstest-troll-needle-nut-bolt-and-scissor
+  version: 3
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/tool-tray-yolo-training-dataset/stresstest-troll-needle-nut-bolt-and-scissor/dataset/3

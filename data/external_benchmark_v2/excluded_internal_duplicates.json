@@ -1,0 +1,62 @@
+[
+  {
+    "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\benchmark-dataset\\train\\images\\image_a_12_jpeg.rf.a04924224d6d244991853f539d1bccb3.jpg",
+    "family": "image_a_12_jpeg",
+    "distance": 0,
+    "matched": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\benchmark-dataset\\train\\images\\download-1-_jpeg.rf.5e01b950897d044876b7020cd6746d1f.jpg"
+  },
+  {
+    "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\benchmark-dataset\\train\\images\\image_a_13_jpeg_jpg.rf.5e16ce214526c90d3b3b4b45cfefbafa.jpg",
+    "family": "image_a_13_jpeg_jpg",
+    "distance": 0,
+    "matched": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\benchmark-dataset\\train\\images\\image_a_13_jpeg.rf.0d2443399efcf2f8cf6f7709df90c188.jpg"
+  },
+  {
+    "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\benchmark-dataset\\train\\images\\image_a_24_jpeg.rf.451eb16b6977de4daf82036e680ae9dc.jpg",
+    "family": "image_a_24_jpeg",
+    "distance": 0,
+    "matched": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\benchmark-dataset\\train\\images\\image_a_10_jpeg.rf.a3d5afa880a9d459c70fcd69e0d302a9.jpg"
+  },
+  {
+    "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\benchmark-dataset\\train\\images\\image_a_4_jpeg.rf.12e2bcdb57252ebbb66589f1f3f79929.jpg",
+    "family": "image_a_4_jpeg",
+    "distance": 2,
+    "matched": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\benchmark-dataset\\train\\images\\download-1-_jpeg.rf.5e01b950897d044876b7020cd6746d1f.jpg"
+  },
+  {
+    "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\benchmark-dataset\\train\\images\\image_a_5_jpeg.rf.9d99d389a9dd5cfff3d7c0643210802f.jpg",
+    "family": "image_a_5_jpeg",
+    "distance": 0,
+    "matched": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\benchmark-dataset\\train\\images\\image_a_22_jpeg.rf.4d49ad7d3caba16cbf27d718f8959107.jpg"
+  },
+  {
+    "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\benchmark-dataset\\train\\images\\image_c_11_jpeg.rf.787272a558be197ae3489d12de06f5f4.jpg",
+    "family": "image_c_11_jpeg",
+    "distance": 0,
+    "matched": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\benchmark-dataset\\train\\images\\image000157_jpg.rf.ec738d19f09150f426d0fdeda07cbf3b.jpg"
+  },
+  {
+    "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\benchmark-dataset\\train\\images\\image_c_11_jpeg_jpg.rf.abccb498eaef02310da7b430a6850c2b.jpg",
+    "family": "image_c_11_jpeg_jpg",
+    "distance": 0,
+    "matched": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\benchmark-dataset\\train\\images\\image000157_jpg.rf.ec738d19f09150f426d0fdeda07cbf3b.jpg"
+  },
+  {
+    "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\benchmark-dataset\\train\\images\\images-3-_jpeg.rf.f64ac7844c157bc2cc13c48cf4e6e47c.jpg",
+    "family": "images-3-_jpeg",
+    "distance": 0,
+    "matched": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\benchmark-dataset\\train\\images\\image_c_10_jpeg.rf.567d8fad00f809684a803499506c9df3.jpg"
+  },
+  {
+    "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\benchmark-dataset\\valid\\images\\images-42_jpg.rf.e03a17bc01dde99d1198471d6e32936d.jpg",
+    "family": "images-42_jpg",
+    "distance": 0,
+    "matched": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\benchmark-dataset\\train\\images\\image000329_jpg.rf.acfdd0da4b3e702e6e0e98a31a8eb482.jpg"
+  },
+  {
+    "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\benchmark-dataset\\train\\images\\images_jpeg_jpg.rf.9467bd7f7a74fe4140e2989518c8d5df.jpg",
+    "family": "images_jpeg_jpg",
+    "distance": 0,
+    "matched": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\benchmark-dataset\\train\\images\\images_jpeg.rf.96e042b933ebdaa71d72483f5a372b36.jpg"
+  }
+]
