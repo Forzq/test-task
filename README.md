@@ -434,9 +434,28 @@ runtime libraries that are unused by the default Compose configuration.
 pytest -q
 ```
 
-## Known limitations and next steps
+## Known limitations and possible improvements
 
-- The model quality depends on the coverage and annotation quality of the public training dataset. New backgrounds, fastener types, severe occlusion, blur, or very small objects may lower recall.
-- A confidence threshold is a product decision: raising it reduces false positives but can miss true objects. Detections near the threshold should be retained for error analysis or routed to manual review in a production workflow.
-- The crop classifier reduces open-set false positives but cannot mathematically recognise every possible unknown object. Continue collecting production false proposals and regenerate or extend the `other` class for iterative hard-negative mining.
-- Production hardening could add request authentication, rate limiting, structured logging, model/version metadata, monitoring of confidence distributions, and asynchronous batch inference.
+### Limitations
+
+- Recall decreases on domain-shifted images such as worn or rusty parts,
+  unusual backgrounds, severe occlusion, blur, and very small objects.
+- Conservative class thresholds reduce false positives but can reject real
+  low-confidence objects. The crop classifier cannot recover an object that
+  the detector did not propose.
+- The internal `other` class lowers open-set false positives but cannot cover
+  every unknown object. Confidence is a model score, not a guarantee that a
+  prediction is correct.
+- Public datasets may contain annotation noise and do not represent every
+  fastener type or real production environment.
+
+### Possible improvements
+
+- Mine model errors from trusted train data: missed real objects as hard
+  positives and verified false detections as hard negatives.
+- Add manually reviewed images of damaged, dirty, partially hidden, small, and
+  non-standard nuts and bolts while keeping a source-disjoint benchmark.
+- Recalibrate detector and classifier thresholds on a representative
+  validation split; evaluate each pipeline stage separately before promotion.
+- Evaluate higher-resolution or tiled detection for small objects and export
+  the approved pipeline to ONNX/OpenVINO for faster CPU inference.
