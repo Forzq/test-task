@@ -1,0 +1,21 @@
+{
+  "name": "deployed_baseline_v1",
+  "git_commit": "ffbcc10",
+  "detector": {
+    "path": "models/best.pt",
+    "sha256": "9A9B63893DE71DA40513CB2F354E2396DF7898625D76ED2CFFB17D2BAD43EA3A",
+    "confidence_threshold": 0.45
+  },
+  "classifier": {
+    "path": "models/classifier_best.pt",
+    "sha256": "96EBF3F8139E0BD420063DD1F420B333118F1A054D049F915666ED7A56993F46",
+    "confidence_threshold": 0.54,
+    "image_size": 224,
+    "crop_contexts": [0.2]
+  },
+  "postprocessing": {
+    "min_box_area_ratio": 0.001,
+    "final_nms_iou_threshold": null
+  },
+  "notes": "Immutable reference for comparing future detector and classifier candidates."
+}

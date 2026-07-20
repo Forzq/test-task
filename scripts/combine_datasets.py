@@ -14,6 +14,7 @@ import yaml
 CLASS_NAMES = ("bolt", "nut")
 SPLITS = ("train", "valid", "test")
 IMAGE_SUFFIXES = {".bmp", ".jpeg", ".jpg", ".png", ".tif", ".tiff", ".webp"}
+EXTERNAL_BENCHMARK_ROOT = Path("data/external_benchmark").resolve()
 
 
 @dataclass(frozen=True, slots=True)
@@ -103,6 +104,29 @@ def build_parser() -> argparse.ArgumentParser:
         help="Optional extra empty-label dataset; repeat for multiple hard-negative sources.",
     )
     return parser
+
+
+def _reject_benchmark_sources(paths: list[Path]) -> None:
+    """
+    Prevent evaluation-only files from entering a generated training dataset.
+
+    Parameters
+    ----------
+    paths : list[Path]
+        Positive and negative source roots requested by the user.
+
+    Raises
+    ------
+    ValueError
+        Raised when a source is the frozen external benchmark or its child.
+    """
+    for path in paths:
+        resolved = path.resolve()
+        if resolved == EXTERNAL_BENCHMARK_ROOT or EXTERNAL_BENCHMARK_ROOT in resolved.parents:
+            raise ValueError(
+                "data/external_benchmark is evaluation-only and cannot be combined "
+                "with training data"
+            )
 
 
 def _read_class_names(dataset_root: Path) -> tuple[str, ...]:
@@ -384,6 +408,15 @@ def main() -> None:
         Raised when either source dataset is not compatible with the task labels.
     """
     arguments = build_parser().parse_args()
+    _reject_benchmark_sources(
+        [
+            arguments.primary,
+            arguments.secondary,
+            *arguments.additional,
+            *arguments.negative_additional,
+            *([arguments.negatives] if arguments.negatives else []),
+        ]
+    )
     primary = inspect_dataset(arguments.primary)
     secondary = inspect_dataset(arguments.secondary)
     additional = [inspect_dataset(path) for path in arguments.additional]

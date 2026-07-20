@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 4
+names: ['Bolt', 'Nut', 'Screw', 'Washer']
+
+roboflow:
+  workspace: bolts
+  project: arg_fixings2
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/bolts/arg_fixings2/dataset/1

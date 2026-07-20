@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 10
+names: ['bearing', 'bolt', 'flange', 'gear', 'nut', 'shaft', 'snap_ring', 'spacer', 'spring', 'washer']
+
+roboflow:
+  workspace: martin-3efbd
+  project: mechanical-parts-detection-glf33-waais
+  version: 3
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/martin-3efbd/mechanical-parts-detection-glf33-waais/dataset/3

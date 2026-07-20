@@ -1,0 +1,7 @@
+path: .
+train: null
+val: null
+test: test/images
+names:
+- bolt
+- nut

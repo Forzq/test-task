@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Protocol
 
 from PIL.Image import Image
@@ -39,10 +39,13 @@ class CropClassification:
         Classifier label such as ``bolt``, ``nut``, or ``other``.
     confidence : float
         Classifier confidence score in the range from zero to one.
+    probabilities : dict[str, float]
+        Optional probability distribution used for multi-scale aggregation.
     """
 
     label: str
     confidence: float
+    probabilities: dict[str, float] = field(default_factory=dict)
 
 
 class DetectorProtocol(Protocol):

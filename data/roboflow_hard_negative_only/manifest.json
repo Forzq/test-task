@@ -1,0 +1,329 @@
+{
+  "description": "Source-, density-, class-, and scale-balanced subset of data/roboflow_additions.",
+  "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\roboflow_additions",
+  "combined_input": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\combined.yaml",
+  "combined_output": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\combined_hardneg_v8.yaml",
+  "seed": 42,
+  "selection_policy": "Positive images are sampled round-robin across class composition, object density, and median box scale; negatives use a stable shuffle.",
+  "splits": {
+    "train": {
+      "total": {
+        "images": 500,
+        "positive_images": 0,
+        "negative_images": 500,
+        "bolt_boxes": 0,
+        "nut_boxes": 0,
+        "positive_strata": {}
+      },
+      "sources": {
+        "fastener_object_detection": {
+          "quota": {
+            "bolt_only": 0,
+            "nut_only": 0,
+            "mixed": 0,
+            "negative": 200
+          },
+          "available": {
+            "images": 723,
+            "positive_images": 4,
+            "negative_images": 719,
+            "bolt_boxes": 6,
+            "nut_boxes": 0,
+            "positive_strata": {
+              "bolt_only/sparse/medium": 4
+            }
+          },
+          "selected": {
+            "images": 200,
+            "positive_images": 0,
+            "negative_images": 200,
+            "bolt_boxes": 0,
+            "nut_boxes": 0,
+            "positive_strata": {}
+          }
+        },
+        "screw_nut_bolt": {
+          "quota": {
+            "bolt_only": 0,
+            "nut_only": 0,
+            "mixed": 0,
+            "negative": 100
+          },
+          "available": {
+            "images": 1055,
+            "positive_images": 806,
+            "negative_images": 249,
+            "bolt_boxes": 7868,
+            "nut_boxes": 11624,
+            "positive_strata": {
+              "bolt_only/dense/small": 225,
+              "bolt_only/dense/tiny": 43,
+              "bolt_only/very_dense/small": 115,
+              "bolt_only/very_dense/tiny": 17,
+              "nut_only/dense/tiny": 7,
+              "nut_only/very_dense/tiny": 399
+            }
+          },
+          "selected": {
+            "images": 100,
+            "positive_images": 0,
+            "negative_images": 100,
+            "bolt_boxes": 0,
+            "nut_boxes": 0,
+            "positive_strata": {}
+          }
+        },
+        "stresstest_tool_tray": {
+          "quota": {
+            "bolt_only": 0,
+            "nut_only": 0,
+            "mixed": 0,
+            "negative": 200
+          },
+          "available": {
+            "images": 949,
+            "positive_images": 412,
+            "negative_images": 537,
+            "bolt_boxes": 389,
+            "nut_boxes": 445,
+            "positive_strata": {
+              "bolt_only/medium/large": 7,
+              "bolt_only/medium/medium": 19,
+              "bolt_only/medium/small": 9,
+              "bolt_only/sparse/large": 98,
+              "bolt_only/sparse/medium": 12,
+              "bolt_only/sparse/small": 1,
+              "bolt_only/very_dense/medium": 1,
+              "mixed/medium/large": 1,
+              "mixed/medium/medium": 2,
+              "mixed/sparse/large": 6,
+              "mixed/sparse/medium": 1,
+              "mixed/very_dense/small": 1,
+              "nut_only/dense/medium": 2,
+              "nut_only/medium/large": 2,
+              "nut_only/medium/medium": 24,
+              "nut_only/medium/small": 6,
+              "nut_only/sparse/large": 193,
+              "nut_only/sparse/medium": 24,
+              "nut_only/sparse/small": 3
+            }
+          },
+          "selected": {
+            "images": 200,
+            "positive_images": 0,
+            "negative_images": 200,
+            "bolt_boxes": 0,
+            "nut_boxes": 0,
+            "positive_strata": {}
+          }
+        }
+      }
+    },
+    "valid": {
+      "total": {
+        "images": 110,
+        "positive_images": 0,
+        "negative_images": 110,
+        "bolt_boxes": 0,
+        "nut_boxes": 0,
+        "positive_strata": {}
+      },
+      "sources": {
+        "fastener_object_detection": {
+          "quota": {
+            "bolt_only": 0,
+            "nut_only": 0,
+            "mixed": 0,
+            "negative": 40
+          },
+          "available": {
+            "images": 133,
+            "positive_images": 1,
+            "negative_images": 132,
+            "bolt_boxes": 1,
+            "nut_boxes": 0,
+            "positive_strata": {
+              "bolt_only/sparse/medium": 1
+            }
+          },
+          "selected": {
+            "images": 40,
+            "positive_images": 0,
+            "negative_images": 40,
+            "bolt_boxes": 0,
+            "nut_boxes": 0,
+            "positive_strata": {}
+          }
+        },
+        "screw_nut_bolt": {
+          "quota": {
+            "bolt_only": 0,
+            "nut_only": 0,
+            "mixed": 0,
+            "negative": 20
+          },
+          "available": {
+            "images": 126,
+            "positive_images": 103,
+            "negative_images": 23,
+            "bolt_boxes": 1078,
+            "nut_boxes": 1417,
+            "positive_strata": {
+              "bolt_only/dense/small": 32,
+              "bolt_only/dense/tiny": 3,
+              "bolt_only/very_dense/small": 20,
+              "nut_only/very_dense/tiny": 48
+            }
+          },
+          "selected": {
+            "images": 20,
+            "positive_images": 0,
+            "negative_images": 20,
+            "bolt_boxes": 0,
+            "nut_boxes": 0,
+            "positive_strata": {}
+          }
+        },
+        "stresstest_tool_tray": {
+          "quota": {
+            "bolt_only": 0,
+            "nut_only": 0,
+            "mixed": 0,
+            "negative": 50
+          },
+          "available": {
+            "images": 243,
+            "positive_images": 87,
+            "negative_images": 156,
+            "bolt_boxes": 66,
+            "nut_boxes": 104,
+            "positive_strata": {
+              "bolt_only/medium/medium": 6,
+              "bolt_only/sparse/large": 16,
+              "bolt_only/sparse/medium": 2,
+              "bolt_only/sparse/small": 1,
+              "mixed/medium/medium": 1,
+              "mixed/sparse/large": 1,
+              "nut_only/medium/large": 1,
+              "nut_only/medium/medium": 6,
+              "nut_only/medium/small": 2,
+              "nut_only/sparse/large": 40,
+              "nut_only/sparse/medium": 10,
+              "nut_only/sparse/small": 1
+            }
+          },
+          "selected": {
+            "images": 50,
+            "positive_images": 0,
+            "negative_images": 50,
+            "bolt_boxes": 0,
+            "nut_boxes": 0,
+            "positive_strata": {}
+          }
+        }
+      }
+    },
+    "test": {
+      "total": {
+        "images": 100,
+        "positive_images": 0,
+        "negative_images": 100,
+        "bolt_boxes": 0,
+        "nut_boxes": 0,
+        "positive_strata": {}
+      },
+      "sources": {
+        "fastener_object_detection": {
+          "quota": {
+            "bolt_only": 0,
+            "nut_only": 0,
+            "mixed": 0,
+            "negative": 40
+          },
+          "available": {
+            "images": 89,
+            "positive_images": 1,
+            "negative_images": 88,
+            "bolt_boxes": 2,
+            "nut_boxes": 0,
+            "positive_strata": {
+              "bolt_only/sparse/medium": 1
+            }
+          },
+          "selected": {
+            "images": 40,
+            "positive_images": 0,
+            "negative_images": 40,
+            "bolt_boxes": 0,
+            "nut_boxes": 0,
+            "positive_strata": {}
+          }
+        },
+        "screw_nut_bolt": {
+          "quota": {
+            "bolt_only": 0,
+            "nut_only": 0,
+            "mixed": 0,
+            "negative": 20
+          },
+          "available": {
+            "images": 119,
+            "positive_images": 91,
+            "negative_images": 28,
+            "bolt_boxes": 873,
+            "nut_boxes": 1331,
+            "positive_strata": {
+              "bolt_only/dense/small": 28,
+              "bolt_only/dense/tiny": 1,
+              "bolt_only/very_dense/small": 14,
+              "bolt_only/very_dense/tiny": 2,
+              "nut_only/very_dense/tiny": 46
+            }
+          },
+          "selected": {
+            "images": 20,
+            "positive_images": 0,
+            "negative_images": 20,
+            "bolt_boxes": 0,
+            "nut_boxes": 0,
+            "positive_strata": {}
+          }
+        },
+        "stresstest_tool_tray": {
+          "quota": {
+            "bolt_only": 0,
+            "nut_only": 0,
+            "mixed": 0,
+            "negative": 40
+          },
+          "available": {
+            "images": 127,
+            "positive_images": 48,
+            "negative_images": 79,
+            "bolt_boxes": 21,
+            "nut_boxes": 49,
+            "positive_strata": {
+              "bolt_only/sparse/large": 14,
+              "bolt_only/sparse/medium": 3,
+              "bolt_only/sparse/small": 1,
+              "mixed/sparse/large": 1,
+              "nut_only/medium/large": 1,
+              "nut_only/medium/small": 3,
+              "nut_only/sparse/large": 21,
+              "nut_only/sparse/medium": 3,
+              "nut_only/sparse/small": 1
+            }
+          },
+          "selected": {
+            "images": 40,
+            "positive_images": 0,
+            "negative_images": 40,
+            "bolt_boxes": 0,
+            "nut_boxes": 0,
+            "positive_strata": {}
+          }
+        }
+      }
+    }
+  }
+}

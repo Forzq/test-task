@@ -1,0 +1,72 @@
+[
+  {
+    "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\benchmark-dataset\\train\\images\\14_jpg.rf.bea2a598c659b8ec0cc0c90106f78d45.jpg",
+    "family": "14_jpg",
+    "reason": "perceptual",
+    "distance": 0,
+    "matched": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\roboflow_additions\\train\\images\\stresstest_tool_tray__14_jpg.rf.07b671f9285c6609c0615ac7e22e63e1__c75bffd9d9.jpg"
+  },
+  {
+    "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\benchmark-dataset\\train\\images\\16_jpg.rf.32252b2d6cb9c4efb07ae70099169b02.jpg",
+    "family": "16_jpg",
+    "reason": "perceptual",
+    "distance": 0,
+    "matched": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\train\\images\\16_jpg.rf.9e55ce1187302c1e306ff234f53f279b.jpg"
+  },
+  {
+    "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\benchmark-dataset\\valid\\images\\17_jpg.rf.dcb2e1996f047b0aefe458a506e4588a.jpg",
+    "family": "17_jpg",
+    "reason": "perceptual",
+    "distance": 0,
+    "matched": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\valid\\images\\17_jpg.rf.bbe3d43ff457a0a6b8444ce961f3dccc.jpg"
+  },
+  {
+    "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\benchmark-dataset\\valid\\images\\18_jpg.rf.a6cd5b18964098c9f5d7561880f7c6ac.jpg",
+    "family": "18_jpg",
+    "reason": "perceptual",
+    "distance": 0,
+    "matched": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\roboflow_additions\\train\\images\\stresstest_tool_tray__18_jpg.rf.7f45658c116d6349ac0e9027f7a61dc2__fd248d2a7f.jpg"
+  },
+  {
+    "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\benchmark-dataset\\train\\images\\20_jpg.rf.68e6758deecdfa680bc910238f0f79c0.jpg",
+    "family": "20_jpg",
+    "reason": "perceptual",
+    "distance": 0,
+    "matched": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\roboflow_additions\\train\\images\\stresstest_tool_tray__20_jpg.rf.d48404cd88b90799a656732253da344c__6d526aac9c.jpg"
+  },
+  {
+    "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\benchmark-dataset\\valid\\images\\24_jpg.rf.26f698d21dd268cec01eb8eaa732e9f2.jpg",
+    "family": "24_jpg",
+    "reason": "perceptual",
+    "distance": 0,
+    "matched": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\roboflow_additions\\valid\\images\\stresstest_tool_tray__24_jpg.rf.cc28d1d3fb31955d6d857d246b20b655__cecd3ebe46.jpg"
+  },
+  {
+    "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\benchmark-dataset\\train\\images\\Untitled1_jpg.rf.024c84a0e99ab1d22cacbe74e5206a33.jpg",
+    "family": "Untitled1_jpg",
+    "reason": "perceptual",
+    "distance": 0,
+    "matched": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\roboflow_additions\\valid\\images\\stresstest_tool_tray__Untitled1_jpg.rf.1b4562598c4eb6bb5139ba811570bff8__e262119a5b.jpg"
+  },
+  {
+    "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\benchmark-dataset\\train\\images\\Untitled_jpg.rf.4a96623fdc71f0916611cec731ccafaf.jpg",
+    "family": "Untitled_jpg",
+    "reason": "perceptual",
+    "distance": 0,
+    "matched": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\roboflow_additions\\train\\images\\stresstest_tool_tray__Untitled_jpg.rf.3004c167da2e5b6feeb949a92283f21c__f5b7e9fcaa.jpg"
+  },
+  {
+    "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\benchmark-dataset\\train\\images\\allen-1711560_1280_jpg.rf.21140dd0ebdd670e1655e9654445f0b1.jpg",
+    "family": "allen-1711560_1280_jpg",
+    "reason": "perceptual",
+    "distance": 0,
+    "matched": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\train\\images\\allen-1711560_1280_jpg.rf.08abb4506f46e2135586a374842accb3.jpg"
+  },
+  {
+    "source": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\benchmark-dataset\\test\\images\\images27_jpg.rf.36540090f898e5a9f543f1935ad84679.jpg",
+    "family": "images27_jpg",
+    "reason": "perceptual",
+    "distance": 0,
+    "matched": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\roboflow_additions\\test\\images\\stresstest_tool_tray__images27_jpg.rf.7c1a7acf562885dafa38467609eb5897__14d85d5956.jpg"
+  }
+]

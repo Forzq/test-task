@@ -1,0 +1,1430 @@
+{
+  "task": "complete_pipeline_classifier_thresholds",
+  "detector": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\models\\candidates\\detector_dataset3_v9.pt",
+  "classifier": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\models\\candidates\\classifier_source_balanced_v10.pt",
+  "split": "val",
+  "contexts": [
+    0.2,
+    1.0
+  ],
+  "detector_thresholds": {
+    "bolt": 0.43,
+    "nut": 0.56
+  },
+  "validation_images": 1353,
+  "verified_candidates": 4081,
+  "requirements": {
+    "minimum_recall": 0.9,
+    "maximum_negative_false_positive_rate": 0.02
+  },
+  "selected": {
+    "bolt": {
+      "constraints_met": false,
+      "class_name": "bolt",
+      "threshold": 0.44,
+      "precision": 0.9635226680562793,
+      "recall": 0.8287763334827432,
+      "negative_false_positive_rate": 0.0031479538300104933
+    },
+    "nut": {
+      "constraints_met": false,
+      "class_name": "nut",
+      "threshold": 0.01,
+      "precision": 0.9737950397753861,
+      "recall": 0.8254660848869496,
+      "negative_false_positive_rate": 0.009268795056642637
+    }
+  },
+  "candidates": {
+    "bolt": [
+      {
+        "class_name": "bolt",
+        "threshold": 0.01,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.02,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.03,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.04,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.05,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.06,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.07,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.08,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.09,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.1,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.11,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.12,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.13,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.14,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.15,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.16,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.17,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.18,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.19,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.2,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.21,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.22,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.23,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.24,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.25,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.26,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.27,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.28,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.29,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.3,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.31,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.32,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.33,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.34,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.35,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.36,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.37,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.38,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.39,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.4,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.41,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.42,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.43,
+        "precision": 0.9630208333333333,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.004197271773347324
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.44,
+        "precision": 0.9635226680562793,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.0031479538300104933
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.45,
+        "precision": 0.9635226680562793,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.0031479538300104933
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.46,
+        "precision": 0.9635226680562793,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.0031479538300104933
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.47,
+        "precision": 0.9635226680562793,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.0031479538300104933
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.48,
+        "precision": 0.9635226680562793,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.0031479538300104933
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.49,
+        "precision": 0.9635226680562793,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.0031479538300104933
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.5,
+        "precision": 0.9635226680562793,
+        "recall": 0.8287763334827432,
+        "negative_false_positive_rate": 0.0031479538300104933
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.51,
+        "precision": 0.9639874739039666,
+        "recall": 0.8278798744957419,
+        "negative_false_positive_rate": 0.0031479538300104933
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.52,
+        "precision": 0.9639121338912134,
+        "recall": 0.8260869565217391,
+        "negative_false_positive_rate": 0.0031479538300104933
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.53,
+        "precision": 0.963855421686747,
+        "recall": 0.8247422680412371,
+        "negative_false_positive_rate": 0.0031479538300104933
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.54,
+        "precision": 0.9643231899265478,
+        "recall": 0.8238458090542358,
+        "negative_false_positive_rate": 0.0031479538300104933
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.55,
+        "precision": 0.9643231899265478,
+        "recall": 0.8238458090542358,
+        "negative_false_positive_rate": 0.0031479538300104933
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.56,
+        "precision": 0.9642857142857143,
+        "recall": 0.8229493500672345,
+        "negative_false_positive_rate": 0.0031479538300104933
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.57,
+        "precision": 0.96422935297212,
+        "recall": 0.8216046615867324,
+        "negative_false_positive_rate": 0.0031479538300104933
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.58,
+        "precision": 0.9641916798314902,
+        "recall": 0.8207082025997311,
+        "negative_false_positive_rate": 0.0031479538300104933
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.59,
+        "precision": 0.9641539272535582,
+        "recall": 0.8198117436127297,
+        "negative_false_positive_rate": 0.0031479538300104933
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.6,
+        "precision": 0.9641350210970464,
+        "recall": 0.819363514119229,
+        "negative_false_positive_rate": 0.0031479538300104933
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.61,
+        "precision": 0.9640591966173362,
+        "recall": 0.8175705961452263,
+        "negative_false_positive_rate": 0.0031479538300104933
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.62,
+        "precision": 0.9640591966173362,
+        "recall": 0.8175705961452263,
+        "negative_false_positive_rate": 0.0031479538300104933
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.63,
+        "precision": 0.9645314981471678,
+        "recall": 0.816674137158225,
+        "negative_false_positive_rate": 0.0031479538300104933
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.64,
+        "precision": 0.9650238473767886,
+        "recall": 0.8162259076647244,
+        "negative_false_positive_rate": 0.0031479538300104933
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.65,
+        "precision": 0.9650053022269353,
+        "recall": 0.8157776781712237,
+        "negative_false_positive_rate": 0.0031479538300104933
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.66,
+        "precision": 0.9649867374005305,
+        "recall": 0.815329448677723,
+        "negative_false_positive_rate": 0.0031479538300104933
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.67,
+        "precision": 0.9654806160382369,
+        "recall": 0.8148812191842223,
+        "negative_false_positive_rate": 0.0031479538300104933
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.68,
+        "precision": 0.9654622741764081,
+        "recall": 0.8144329896907216,
+        "negative_false_positive_rate": 0.0031479538300104933
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.69,
+        "precision": 0.9654255319148937,
+        "recall": 0.8135365307037203,
+        "negative_false_positive_rate": 0.0031479538300104933
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.7,
+        "precision": 0.9654071314529005,
+        "recall": 0.8130883012102196,
+        "negative_false_positive_rate": 0.0031479538300104933
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.71,
+        "precision": 0.9659030367607885,
+        "recall": 0.8126400717167189,
+        "negative_false_positive_rate": 0.0031479538300104933
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.72,
+        "precision": 0.9658666666666667,
+        "recall": 0.8117436127297176,
+        "negative_false_positive_rate": 0.0031479538300104933
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.73,
+        "precision": 0.9658666666666667,
+        "recall": 0.8117436127297176,
+        "negative_false_positive_rate": 0.0031479538300104933
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.74,
+        "precision": 0.9658666666666667,
+        "recall": 0.8117436127297176,
+        "negative_false_positive_rate": 0.0031479538300104933
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.75,
+        "precision": 0.9658666666666667,
+        "recall": 0.8117436127297176,
+        "negative_false_positive_rate": 0.0031479538300104933
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.76,
+        "precision": 0.9663461538461539,
+        "recall": 0.8108471537427163,
+        "negative_false_positive_rate": 0.002098635886673662
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.77,
+        "precision": 0.9668449197860962,
+        "recall": 0.8103989242492156,
+        "negative_false_positive_rate": 0.002098635886673662
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.78,
+        "precision": 0.9668271803103263,
+        "recall": 0.8099506947557149,
+        "negative_false_positive_rate": 0.002098635886673662
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.79,
+        "precision": 0.9668094218415417,
+        "recall": 0.8095024652622143,
+        "negative_false_positive_rate": 0.002098635886673662
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.8,
+        "precision": 0.9668094218415417,
+        "recall": 0.8095024652622143,
+        "negative_false_positive_rate": 0.002098635886673662
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.81,
+        "precision": 0.967327262988752,
+        "recall": 0.8095024652622143,
+        "negative_false_positive_rate": 0.002098635886673662
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.82,
+        "precision": 0.9673097534833869,
+        "recall": 0.8090542357687136,
+        "negative_false_positive_rate": 0.002098635886673662
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.83,
+        "precision": 0.9672922252010724,
+        "recall": 0.808606006275213,
+        "negative_false_positive_rate": 0.002098635886673662
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.84,
+        "precision": 0.9671513193322563,
+        "recall": 0.8050201703272075,
+        "negative_false_positive_rate": 0.002098635886673662
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.85,
+        "precision": 0.9671336206896551,
+        "recall": 0.8045719408337069,
+        "negative_false_positive_rate": 0.002098635886673662
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.86,
+        "precision": 0.9670626349892009,
+        "recall": 0.8027790228597041,
+        "negative_false_positive_rate": 0.002098635886673662
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.87,
+        "precision": 0.966991341991342,
+        "recall": 0.8009861048857014,
+        "negative_false_positive_rate": 0.002098635886673662
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.88,
+        "precision": 0.967479674796748,
+        "recall": 0.8000896458987001,
+        "negative_false_positive_rate": 0.002098635886673662
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.89,
+        "precision": 0.9674267100977199,
+        "recall": 0.7987449574181981,
+        "negative_false_positive_rate": 0.002098635886673662
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.9,
+        "precision": 0.9674267100977199,
+        "recall": 0.7987449574181981,
+        "negative_false_positive_rate": 0.002098635886673662
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.91,
+        "precision": 0.967373572593801,
+        "recall": 0.7974002689376961,
+        "negative_false_positive_rate": 0.002098635886673662
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.92,
+        "precision": 0.9673380511703865,
+        "recall": 0.7965038099506948,
+        "negative_false_positive_rate": 0.002098635886673662
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.93,
+        "precision": 0.9673202614379085,
+        "recall": 0.796055580457194,
+        "negative_false_positive_rate": 0.002098635886673662
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.94,
+        "precision": 0.9672131147540983,
+        "recall": 0.79336620349619,
+        "negative_false_positive_rate": 0.002098635886673662
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.95,
+        "precision": 0.9670691547749726,
+        "recall": 0.7897803675481847,
+        "negative_false_positive_rate": 0.002098635886673662
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.96,
+        "precision": 0.967439293598234,
+        "recall": 0.7857463021066786,
+        "negative_false_positive_rate": 0.002098635886673662
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.97,
+        "precision": 0.9673130193905817,
+        "recall": 0.782608695652174,
+        "negative_false_positive_rate": 0.002098635886673662
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.98,
+        "precision": 0.9676158570630933,
+        "recall": 0.7767817122366651,
+        "negative_false_positive_rate": 0.002098635886673662
+      },
+      {
+        "class_name": "bolt",
+        "threshold": 0.99,
+        "precision": 0.9693530079455165,
+        "recall": 0.7655759748991484,
+        "negative_false_positive_rate": 0.002098635886673662
+      }
+    ],
+    "nut": [
+      {
+        "class_name": "nut",
+        "threshold": 0.01,
+        "precision": 0.9737950397753861,
+        "recall": 0.8254660848869496,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.02,
+        "precision": 0.9737950397753861,
+        "recall": 0.8254660848869496,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.03,
+        "precision": 0.9737950397753861,
+        "recall": 0.8254660848869496,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.04,
+        "precision": 0.9737950397753861,
+        "recall": 0.8254660848869496,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.05,
+        "precision": 0.9737950397753861,
+        "recall": 0.8254660848869496,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.06,
+        "precision": 0.9737950397753861,
+        "recall": 0.8254660848869496,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.07,
+        "precision": 0.9737950397753861,
+        "recall": 0.8254660848869496,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.08,
+        "precision": 0.9737950397753861,
+        "recall": 0.8254660848869496,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.09,
+        "precision": 0.9737950397753861,
+        "recall": 0.8254660848869496,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.1,
+        "precision": 0.9737950397753861,
+        "recall": 0.8254660848869496,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.11,
+        "precision": 0.9737950397753861,
+        "recall": 0.8254660848869496,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.12,
+        "precision": 0.9737950397753861,
+        "recall": 0.8254660848869496,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.13,
+        "precision": 0.9737950397753861,
+        "recall": 0.8254660848869496,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.14,
+        "precision": 0.9737950397753861,
+        "recall": 0.8254660848869496,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.15,
+        "precision": 0.9737950397753861,
+        "recall": 0.8254660848869496,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.16,
+        "precision": 0.9737950397753861,
+        "recall": 0.8254660848869496,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.17,
+        "precision": 0.9737950397753861,
+        "recall": 0.8254660848869496,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.18,
+        "precision": 0.9737950397753861,
+        "recall": 0.8254660848869496,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.19,
+        "precision": 0.9737950397753861,
+        "recall": 0.8254660848869496,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.2,
+        "precision": 0.9737950397753861,
+        "recall": 0.8254660848869496,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.21,
+        "precision": 0.9737950397753861,
+        "recall": 0.8254660848869496,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.22,
+        "precision": 0.9737950397753861,
+        "recall": 0.8254660848869496,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.23,
+        "precision": 0.9737950397753861,
+        "recall": 0.8254660848869496,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.24,
+        "precision": 0.9737950397753861,
+        "recall": 0.8254660848869496,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.25,
+        "precision": 0.9737950397753861,
+        "recall": 0.8254660848869496,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.26,
+        "precision": 0.9737950397753861,
+        "recall": 0.8254660848869496,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.27,
+        "precision": 0.9737950397753861,
+        "recall": 0.8254660848869496,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.28,
+        "precision": 0.9737950397753861,
+        "recall": 0.8254660848869496,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.29,
+        "precision": 0.9737950397753861,
+        "recall": 0.8254660848869496,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.3,
+        "precision": 0.9737950397753861,
+        "recall": 0.8254660848869496,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.31,
+        "precision": 0.9737950397753861,
+        "recall": 0.8254660848869496,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.32,
+        "precision": 0.9737950397753861,
+        "recall": 0.8254660848869496,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.33,
+        "precision": 0.9737950397753861,
+        "recall": 0.8254660848869496,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.34,
+        "precision": 0.9737827715355806,
+        "recall": 0.8250694168980564,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.35,
+        "precision": 0.9737827715355806,
+        "recall": 0.8250694168980564,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.36,
+        "precision": 0.9737827715355806,
+        "recall": 0.8250694168980564,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.37,
+        "precision": 0.9737827715355806,
+        "recall": 0.8250694168980564,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.38,
+        "precision": 0.9737827715355806,
+        "recall": 0.8250694168980564,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.39,
+        "precision": 0.9737827715355806,
+        "recall": 0.8250694168980564,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.4,
+        "precision": 0.9737827715355806,
+        "recall": 0.8250694168980564,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.41,
+        "precision": 0.9737827715355806,
+        "recall": 0.8250694168980564,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.42,
+        "precision": 0.9737827715355806,
+        "recall": 0.8250694168980564,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.43,
+        "precision": 0.9737827715355806,
+        "recall": 0.8250694168980564,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.44,
+        "precision": 0.9737704918032787,
+        "recall": 0.824672748909163,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.45,
+        "precision": 0.9737704918032787,
+        "recall": 0.824672748909163,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.46,
+        "precision": 0.9737704918032787,
+        "recall": 0.824672748909163,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.47,
+        "precision": 0.9737704918032787,
+        "recall": 0.824672748909163,
+        "negative_false_positive_rate": 0.009268795056642637
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.48,
+        "precision": 0.9742268041237113,
+        "recall": 0.824672748909163,
+        "negative_false_positive_rate": 0.008238928939237899
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.49,
+        "precision": 0.9742268041237113,
+        "recall": 0.824672748909163,
+        "negative_false_positive_rate": 0.008238928939237899
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.5,
+        "precision": 0.9742268041237113,
+        "recall": 0.824672748909163,
+        "negative_false_positive_rate": 0.008238928939237899
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.51,
+        "precision": 0.9741784037558685,
+        "recall": 0.8230860769535898,
+        "negative_false_positive_rate": 0.008238928939237899
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.52,
+        "precision": 0.9741541353383458,
+        "recall": 0.8222927409758033,
+        "negative_false_positive_rate": 0.008238928939237899
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.53,
+        "precision": 0.9745882352941176,
+        "recall": 0.8214994049980167,
+        "negative_false_positive_rate": 0.007209062821833162
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.54,
+        "precision": 0.9745642958078191,
+        "recall": 0.82070606902023,
+        "negative_false_positive_rate": 0.007209062821833162
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.55,
+        "precision": 0.9749290444654684,
+        "recall": 0.8175327251090837,
+        "negative_false_positive_rate": 0.006179196704428424
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.56,
+        "precision": 0.974905303030303,
+        "recall": 0.8167393891312971,
+        "negative_false_positive_rate": 0.006179196704428424
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.57,
+        "precision": 0.974905303030303,
+        "recall": 0.8167393891312971,
+        "negative_false_positive_rate": 0.006179196704428424
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.58,
+        "precision": 0.974905303030303,
+        "recall": 0.8167393891312971,
+        "negative_false_positive_rate": 0.006179196704428424
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.59,
+        "precision": 0.9748934154429181,
+        "recall": 0.8163427211424038,
+        "negative_false_positive_rate": 0.006179196704428424
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.6,
+        "precision": 0.9753320683111955,
+        "recall": 0.8155493851646172,
+        "negative_false_positive_rate": 0.006179196704428424
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.61,
+        "precision": 0.9753086419753086,
+        "recall": 0.8147560491868306,
+        "negative_false_positive_rate": 0.006179196704428424
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.62,
+        "precision": 0.9752851711026616,
+        "recall": 0.813962713209044,
+        "negative_false_positive_rate": 0.006179196704428424
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.63,
+        "precision": 0.9752380952380952,
+        "recall": 0.8123760412534708,
+        "negative_false_positive_rate": 0.006179196704428424
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.64,
+        "precision": 0.9752262982372558,
+        "recall": 0.8119793732645776,
+        "negative_false_positive_rate": 0.006179196704428424
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.65,
+        "precision": 0.9752026704816404,
+        "recall": 0.811186037286791,
+        "negative_false_positive_rate": 0.006179196704428424
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.66,
+        "precision": 0.9755980861244019,
+        "recall": 0.8088060293534312,
+        "negative_false_positive_rate": 0.006179196704428424
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.67,
+        "precision": 0.9755864049784586,
+        "recall": 0.8084093613645379,
+        "negative_false_positive_rate": 0.006179196704428424
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.68,
+        "precision": 0.9760191846522782,
+        "recall": 0.807219357397858,
+        "negative_false_positive_rate": 0.005149330587023687
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.69,
+        "precision": 0.9759846301633045,
+        "recall": 0.8060293534311781,
+        "negative_false_positive_rate": 0.005149330587023687
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.7,
+        "precision": 0.9764423076923077,
+        "recall": 0.8056326854422848,
+        "negative_false_positive_rate": 0.004119464469618949
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.71,
+        "precision": 0.9764196342637151,
+        "recall": 0.8048393494644982,
+        "negative_false_positive_rate": 0.004119464469618949
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.72,
+        "precision": 0.9768897448242657,
+        "recall": 0.8048393494644982,
+        "negative_false_positive_rate": 0.004119464469618949
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.73,
+        "precision": 0.976878612716763,
+        "recall": 0.8044426814756049,
+        "negative_false_positive_rate": 0.004119464469618949
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.74,
+        "precision": 0.9773166023166023,
+        "recall": 0.803252677508925,
+        "negative_false_positive_rate": 0.004119464469618949
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.75,
+        "precision": 0.9772727272727273,
+        "recall": 0.8016660055533519,
+        "negative_false_positive_rate": 0.004119464469618949
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.76,
+        "precision": 0.9772507260406583,
+        "recall": 0.8008726695755652,
+        "negative_false_positive_rate": 0.004119464469618949
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.77,
+        "precision": 0.9772286821705426,
+        "recall": 0.8000793335977786,
+        "negative_false_positive_rate": 0.004119464469618949
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.78,
+        "precision": 0.9776699029126213,
+        "recall": 0.7988893296310988,
+        "negative_false_positive_rate": 0.003089598352214212
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.79,
+        "precision": 0.9776699029126213,
+        "recall": 0.7988893296310988,
+        "negative_false_positive_rate": 0.003089598352214212
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.8,
+        "precision": 0.9785888077858881,
+        "recall": 0.7976993256644189,
+        "negative_false_positive_rate": 0.0020597322348094747
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.81,
+        "precision": 0.9785575048732943,
+        "recall": 0.796509321697739,
+        "negative_false_positive_rate": 0.0020597322348094747
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.82,
+        "precision": 0.9785261102977062,
+        "recall": 0.7953193177310591,
+        "negative_false_positive_rate": 0.0020597322348094747
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.83,
+        "precision": 0.9794419970631424,
+        "recall": 0.793732645775486,
+        "negative_false_positive_rate": 0.0020597322348094747
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.84,
+        "precision": 0.9794319294809011,
+        "recall": 0.7933359777865926,
+        "negative_false_positive_rate": 0.0020597322348094747
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.85,
+        "precision": 0.9803825404610103,
+        "recall": 0.7929393097976993,
+        "negative_false_positive_rate": 0.0020597322348094747
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.86,
+        "precision": 0.9803439803439803,
+        "recall": 0.7913526378421262,
+        "negative_false_positive_rate": 0.0020597322348094747
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.87,
+        "precision": 0.9803246433841614,
+        "recall": 0.7905593018643395,
+        "negative_false_positive_rate": 0.0020597322348094747
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.88,
+        "precision": 0.9802664035520473,
+        "recall": 0.7881792939309797,
+        "negative_false_positive_rate": 0.0020597322348094747
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.89,
+        "precision": 0.980246913580247,
+        "recall": 0.7873859579531932,
+        "negative_false_positive_rate": 0.0020597322348094747
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.9,
+        "precision": 0.9802176063303659,
+        "recall": 0.7861959539865133,
+        "negative_false_positive_rate": 0.0020597322348094747
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.91,
+        "precision": 0.9806739345887017,
+        "recall": 0.7850059500198334,
+        "negative_false_positive_rate": 0.0010298661174047373
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.92,
+        "precision": 0.9806547619047619,
+        "recall": 0.7842126140420468,
+        "negative_false_positive_rate": 0.0010298661174047373
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.93,
+        "precision": 0.9816285998013903,
+        "recall": 0.7842126140420468,
+        "negative_false_positive_rate": 0.0010298661174047373
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.94,
+        "precision": 0.9815920398009951,
+        "recall": 0.7826259420864736,
+        "negative_false_positive_rate": 0.0010298661174047373
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.95,
+        "precision": 0.9815277084373439,
+        "recall": 0.7798492661642206,
+        "negative_false_positive_rate": 0.0010298661174047373
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.96,
+        "precision": 0.982429718875502,
+        "recall": 0.7762792542641809,
+        "negative_false_positive_rate": 0.0010298661174047373
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.97,
+        "precision": 0.9823143001515917,
+        "recall": 0.771122570408568,
+        "negative_false_positive_rate": 0.0010298661174047373
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.98,
+        "precision": 0.9825819672131147,
+        "recall": 0.7608092026973423,
+        "negative_false_positive_rate": 0.0010298661174047373
+      },
+      {
+        "class_name": "nut",
+        "threshold": 0.99,
+        "precision": 0.9843668577384054,
+        "recall": 0.7493058310194367,
+        "negative_false_positive_rate": 0.0010298661174047373
+      }
+    ]
+  }
+}

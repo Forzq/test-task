@@ -17,10 +17,17 @@ data/**
 !data/**/*.yaml
 !data/**/*.json
 !data/README*.txt
+!data/external_benchmark/review.csv
+!data/external_benchmark_v2/review.csv
+!data/arg_fixings_training/review.csv
+!data/roboflow_additions/review.csv
 
 # Small curated cases are part of the application regression suite.
 !data/regression/**
 !data/manual_hard_negatives/**
+
+# Public benchmark archives and extracted payloads are reproducibly downloaded.
+data/external_benchmark_sources/**
 
 # Base checkpoints are downloaded automatically by Ultralytics during training.
 # Trained models/best.pt and models/classifier_best.pt are tracked for submission.

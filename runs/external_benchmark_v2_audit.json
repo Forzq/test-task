@@ -1,0 +1,49 @@
+{
+  "dataset": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\external_benchmark_v2\\benchmark.yaml",
+  "tiny_area_ratio": 0.001,
+  "splits": {
+    "train": {},
+    "val": {},
+    "test": {
+      "images": 260,
+      "negative_images": 111,
+      "box_labels": 625,
+      "nut_boxes": 371,
+      "bolt_boxes": 254
+    }
+  },
+  "sources": {
+    "test:.": {
+      "images": 260,
+      "negative_images": 111,
+      "nut_boxes": 371,
+      "bolt_boxes": 254
+    }
+  },
+  "train_class_imbalance_ratio": null,
+  "box_area_quantiles": {
+    "bolt": {
+      "min": 0.0018054199218750036,
+      "p01": 0.00264892578125,
+      "p05": 0.004844970703125009,
+      "p50": 0.05969970703125,
+      "p95": 0.470233154296875,
+      "max": 0.9789427382367342
+    },
+    "nut": {
+      "min": 0.0011279296875,
+      "p01": 0.0016204833984375,
+      "p05": 0.0029296875,
+      "p50": 0.021002197265625,
+      "p95": 0.2992431640625,
+      "max": 0.967451171875
+    }
+  },
+  "invalid_images_or_labels": [],
+  "exact_duplicate_groups": 0,
+  "cross_split_duplicate_groups": 0,
+  "cross_split_duplicate_examples": [],
+  "recommendations": [
+    "Review tiny boxes and source-level outliers before using area filters for training metrics."
+  ]
+}

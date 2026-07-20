@@ -1,0 +1,44 @@
+{
+  "source": {
+    "title": "ARG_FIXINGS2",
+    "url": "https://universe.roboflow.com/bolts/arg_fixings2",
+    "version": 1,
+    "license": "CC BY 4.0",
+    "mapping": "Bolt -> bolt; Nut -> nut; Screw and Washer -> background",
+    "annotation_note": "Source reports manual annotation with model/SAM assistance."
+  },
+  "archive_sha256": "9b1fec9b6b1c67cd5ca20bb2c2675f2f50c012c3b01707818d94f2ff0631f461",
+  "splits": {
+    "train": {
+      "images": 67,
+      "bolt_boxes": 1305,
+      "nut_boxes": 1093,
+      "negative_images": 0
+    },
+    "valid": {
+      "images": 17,
+      "bolt_boxes": 180,
+      "nut_boxes": 180,
+      "negative_images": 0
+    },
+    "test": {
+      "images": 19,
+      "bolt_boxes": 189,
+      "nut_boxes": 195,
+      "negative_images": 3
+    }
+  },
+  "source_boxes": {
+    "nut": 1468,
+    "bolt": 1674,
+    "washer": 984,
+    "screw": 817
+  },
+  "duplicates_removed": {
+    "against_external_benchmark": 0,
+    "within_source": 0,
+    "offline_augmented_variants": 517
+  },
+  "max_train_variants_per_source": 1,
+  "review_worksheet": "review.csv"
+}

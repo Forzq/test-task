@@ -1,0 +1,79 @@
+{
+  "source": {
+    "title": "mechanical parts detection",
+    "workspace": "martin-3efbd",
+    "project": "mechanical-parts-detection-glf33-waais",
+    "version": 3,
+    "url": "https://universe.roboflow.com/martin-3efbd/mechanical-parts-detection-glf33-waais/dataset/3",
+    "license": "CC BY 4.0",
+    "raw_directory": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\dataset3",
+    "source_classes": [
+      "bearing",
+      "bolt",
+      "flange",
+      "gear",
+      "nut",
+      "shaft",
+      "snap_ring",
+      "spacer",
+      "spring",
+      "washer"
+    ]
+  },
+  "mapping": {
+    "bolt": "bolt",
+    "nut": "nut",
+    "other_source_classes": "detector background; retained in ignored_boxes.jsonl"
+  },
+  "configuration": {
+    "validation_percent": 10,
+    "max_variants_per_family": 1,
+    "seed": 42,
+    "existing_data": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\combined.yaml"
+  },
+  "raw_images": 5237,
+  "source_polygon_annotations_converted": 239,
+  "source_families": 4261,
+  "multi_variant_families": 345,
+  "offline_variants_not_retained": 976,
+  "byte_duplicates_skipped_against_existing_data": 0,
+  "selected_families": 4261,
+  "split_counts": {
+    "train": {
+      "bolt_boxes": 2241,
+      "ignored_boxes": 8426,
+      "images": 3815,
+      "negative_images": 2502,
+      "nut_boxes": 2993,
+      "positive_images": 1313
+    },
+    "valid": {
+      "bolt_boxes": 248,
+      "ignored_boxes": 1020,
+      "images": 446,
+      "negative_images": 278,
+      "nut_boxes": 406,
+      "positive_images": 168
+    },
+    "test": {}
+  },
+  "ignored_class_boxes": {
+    "bearing": 2335,
+    "flange": 1241,
+    "gear": 2275,
+    "shaft": 247,
+    "snap_ring": 243,
+    "spacer": 199,
+    "spring": 2704,
+    "washer": 202
+  },
+  "retiring_benchmark": {
+    "path": "C:\\Users\\Forz\\Desktop\\test-task-local\\test-task\\data\\external_benchmark\\images",
+    "matching_source_families": 167,
+    "policy": "The current benchmark must not be used for model selection after training on this prepared dataset. Build benchmark v2 for A/B comparison."
+  },
+  "review": {
+    "status": "pending",
+    "worksheet": "review.csv"
+  }
+}

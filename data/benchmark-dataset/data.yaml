@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 6
+names: ['bolt', 'lockwasher', 'nut', 'other', 'screw', 'washer']
+
+roboflow:
+  workspace: fastener-urest
+  project: bolts-v5qf3
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/fastener-urest/bolts-v5qf3/dataset/1
